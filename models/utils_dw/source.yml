@@ -1,0 +1,12 @@
+---
+# https://docs.getdbt.com/reference/configs-and-properties#example
+# Adicionar tabelas em ordem alfabética
+
+version: 2
+
+sources:
+  - name: utils_dw
+    database: omni-dw
+    description: ""
+    tables:
+      - name: dim_tempo

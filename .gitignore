@@ -1,0 +1,6 @@
+edr_target/
+target/
+dbt_packages/
+logs/
+keys/*.json
+birdbase-venv/

@@ -1,0 +1,23 @@
+omni_dw:
+  outputs:
+    dev:
+      dataset: birdbase_silver_homolog
+      fixed_retries: 1
+      location: US
+      method: oauth
+      priority: batch
+      project: mackenzie-engenharia-dados
+      threads: 20
+      timeout_seconds: 800
+      type: bigquery
+    prod:
+      dataset:  birdbase_silver
+      fixed_retries: 1
+      location: US
+      method: oauth
+      priority: batch
+      project: mackenzie-engenharia-dados
+      threads: 20
+      timeout_seconds: 800
+      type: bigquery
+  target: prod

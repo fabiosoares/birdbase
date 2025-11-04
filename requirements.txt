@@ -1,0 +1,7 @@
+dbt-core==1.10.13
+dbt-tests-adapter==1.19.1
+dbt-bigquery==1.10.2
+dbt-extractor==0.6.0
+dbt-rpc==0.4.1
+dbt-semantic-interfaces==0.9.0
+setuptools==80.9.0
