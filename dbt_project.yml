@@ -34,6 +34,8 @@ models:
       schema: birdbase_silver
     birdbase_gold:
       schema: birdbase_gold
+    utils_dw:
+      schema: utils_dw
 
     +tags: tcc
   +persist_docs:
