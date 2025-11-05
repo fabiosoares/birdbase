@@ -6,7 +6,7 @@ version: 2
 
 sources:
   - name: utils_dw
-    database: omni-dw
+    database: mackenzie-engenharia-dados
     description: ""
     tables:
       - name: dim_tempo

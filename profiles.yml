@@ -1,10 +1,11 @@
-omni_dw:
+birdbase:
   outputs:
     dev:
       dataset: birdbase_silver_homolog
       fixed_retries: 1
       location: US
-      method: oauth
+      method: service-account
+      keyfile: /var/www/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json
       priority: batch
       project: mackenzie-engenharia-dados
       threads: 20
@@ -14,7 +15,8 @@ omni_dw:
       dataset:  birdbase_silver
       fixed_retries: 1
       location: US
-      method: oauth
+      method: service-account
+      keyfile: /var/www/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json
       priority: batch
       project: mackenzie-engenharia-dados
       threads: 20
