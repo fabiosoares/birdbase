@@ -1,0 +1,11 @@
+---
+# Adicionar tabelas em ordem alfabética
+
+version: 2
+
+sources:
+  - name: birdbase_bronze
+    database: mackenzie-engenharia-dados
+    description: "Dados raw do projeto"
+    tables:
+      - name: data

@@ -1,0 +1,25 @@
+---
+version: 2
+
+models:
+  - name: dim_reino_biogeografico
+    description: >
+      Tabela de dimensão de reinos biogeográficos das aves. Campo de origem: rlm
+      Insert criado com LLM
+    columns:
+      - name: sgk_reino_biogeografico
+        description: "Chave única do reino biogeográfico"
+        tests:
+          - not_null
+          - unique
+
+      - name: tp_reino_biogeografico
+        description: "Tipo do reino biogeográfico (sigla)"
+        tests:
+          - not_null
+          - unique
+      
+      - name: nm_portugues
+        description: "Nome do reino biogeográfico em português"
+        tests:
+          - not_null

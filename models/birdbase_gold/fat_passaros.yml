@@ -1,0 +1,22 @@
+---
+version: 2
+
+models:
+  - name: fat_passaros
+    description: >
+      Tabela fato que contém informações detalhadas sobre os pássaros, incluindo suas características biológicas, status de conservação e dados geográficos.
+    tags: ['birdbase', 'fat']
+    columns:
+      - name: id_passaro
+        description: "Chave única do pássaro"
+        tests:
+          - not_null
+          - unique
+          
+      - name: sgk_status_conservacao
+        description: "Chave estrangeira referenciando o status de conservação do pássaro"
+
+      - name: nome_cientifico
+        description: "Nome científico do pássaro"
+        tests:
+          - not_null

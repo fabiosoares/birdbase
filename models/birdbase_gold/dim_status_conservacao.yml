@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: dim_tempo
+  - name: dim_status_conservacao
     description: >
       Tabela de dimensão de status de conservação das aves. Campo de origem: 2024_iucn_red_list_category
       Insert criado com LLM

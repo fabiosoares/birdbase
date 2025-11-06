@@ -25,5 +25,7 @@ WITH tbl_base AS (
     SELECT 'LC', 'LC', 'Least Concern', 'Pouco Preocupante'
     UNION ALL
     SELECT 'DD', 'DD', 'Data Deficient', 'Dados Insuficientes'
+    UNION ALL
+    SELECT 'NULL', NULL, 'Not Specified', 'Não Especificado'
 )
 SELECT * FROM tbl_base
