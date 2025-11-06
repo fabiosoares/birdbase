@@ -1,0 +1,29 @@
+---
+version: 2
+
+models:
+  - name: dim_tempo
+    description: >
+      Tabela de dimensão de status de conservação das aves. Campo de origem: 2024_iucn_red_list_category
+      Insert criado com LLM
+    columns:
+      - name: sgk_status_conservacao
+        description: "Chave única do status de conservação"
+        tests:
+          - not_null
+          - unique
+
+      - name: tp_status_conservacao
+        description: "Tipo do status de conservação (sigla)"
+        tests:
+          - not_null
+          - unique
+      - name: nm_ingles
+        description: "Nome do status de conservação em inglês"
+        tests:
+          - not_null
+      
+      - name: nm_portugues
+        description: "Nome do status de conservação em português"
+        tests:
+          - not_null

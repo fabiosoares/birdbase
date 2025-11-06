@@ -5,8 +5,8 @@
 version: 2
 
 sources:
-  - name: utils_dw
+  - name: birdbase_gold
     database: mackenzie-engenharia-dados
     description: ""
     tables:
-      - name: dim_tempo
+      - name: dim_status_conservacao
