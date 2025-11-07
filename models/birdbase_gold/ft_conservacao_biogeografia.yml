@@ -1,0 +1,22 @@
+---
+version: 2
+
+models:
+  - name: ft_conservacao_biogeografia
+    description: >
+      Tabela fato que agrega informações sobre o status de conservação
+      e a biogeografia dos pássaros, incluindo seus reinos biogeográficos
+      - name: sgk_status_conservacao
+        description: "Chave estrangeira para o status de conservação do pássaro"
+        tests:
+          - not_null
+      - name: nm_portugues
+        description: "Nome em português do status de conservação"
+      - name: sgk_reino_biogeografico
+        description: "Chave estrangeira para o reino biogeográfico do pássaro"
+        tests:
+          - not_null
+      - name: tp_reino_biogeografico
+        description: "Tipo do reino biogeográfico"
+      - name: nm_cientifico
+        description: "Nome científico do pássaro"

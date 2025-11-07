@@ -1,0 +1,33 @@
+---
+version: 2
+
+models:
+  - name: fat_visao_geral
+    description: >
+      Tabela fato que agrega informações detalhadas sobre os pássaros,
+      incluindo suas características biológicas
+      - name: id_passaro
+        description: "Chave única do pássaro"
+        tests:
+          - not_null
+          - unique
+      - name: sgk_ordem
+        description: "Chave estrangeira para a ordem do pássaro"
+        tests:
+          - not_null
+      - name: tp_ordem_latin
+        description: "Nome científico da ordem do pássaro"
+      - name: ds_ordem
+        description: "Composição da ordem do pássaro"
+      - name: nm_cientifico
+        description: "Nome científico do pássaro"
+      - name: tp_ds_ordem
+        description: "Combinação do nome científico e descrição da ordem"
+      - name: tp_familia
+        description: "Família taxonômica do pássaro"
+      - name: tp_genero
+        description: "Gênero taxonômico do pássaro"
+      - name: tp_especie
+        description: "Espécie do pássaro"
+
+     
