@@ -12,11 +12,36 @@ models:
         tests:
           - not_null
           - unique
-          
+
       - name: sgk_status_conservacao
         description: "Chave estrangeira referenciando o status de conservação do pássaro"
 
       - name: nome_cientifico
         description: "Nome científico do pássaro"
+        tests:
+          - not_null
+
+      - name: sgk_reino_biogeografico
+        description: "Chave estrangeira referenciando o reino biogeográfico do pássaro"
+        tests:
+          - not_null
+
+      - name: sgk_ordem
+        description: "Chave estrangeira referenciando a ordem taxonômica do pássaro"
+        tests:
+          - not_null
+
+      - name: tp_familia
+        description: "Tipo da família taxonômica do pássaro"
+        tests:
+          - not_null
+      
+      - name: tp_genero
+        description: "Tipo do gênero taxonômico do pássaro"
+        tests:
+          - not_null
+
+      - name: tp_especie
+        description: "Tipo da espécie taxonômica do pássaro"
         tests:
           - not_null

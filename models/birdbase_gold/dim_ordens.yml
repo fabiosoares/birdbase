@@ -1,0 +1,25 @@
+---
+version: 2
+
+models:
+  - name: dim_ordens
+    description: >
+      Tabela de dimensão de ordens das aves. Campo de origem: order
+      Insert criado com LLM
+    columns:
+      - name: sgk_ordem
+        description: "Chave única da ordem"
+        tests:
+          - not_null
+          - unique 
+
+      - name: tp_ordem_latin
+        description: "Tipo da ordem em latim"
+        tests:
+          - not_null
+          - unique 
+
+      - name: ds_ordem
+        description: "Descrição da ordem em português (Brasil)"
+        tests:
+          - not_null
