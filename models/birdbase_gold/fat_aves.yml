@@ -1,0 +1,71 @@
+---
+version: 2
+
+models:
+  - name: fat_aves
+    description: >
+      Tabela fato que contém informações detalhadas sobre os pássaros, incluindo suas 
+      características biológicas, status de conservação e dados geográficos.
+    tags: ['birdbase', 'fat']
+    columns:
+      - name: id_ave
+        description: "Chave única da ave"
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_cientifico
+        description: "Nome científico da ave"
+        tests:
+          - not_null
+
+      - name: sgk_ordem
+        description: "Chave estrangeira referenciando a ordem taxonômica da ave"
+        tests:
+          - not_null
+
+      - name: tp_familia
+        description: "Tipo da família taxonômica da ave"
+        tests:
+          - not_null
+      
+      - name: tp_genero
+        description: "Tipo do gênero taxonômico da ave"
+        tests:
+          - not_null
+
+      - name: tp_especie
+        description: "Tipo da espécie taxonômica da ave"
+        tests:
+          - not_null
+
+      - name: sgk_status_conservacao
+        description: "Chave estrangeira referenciando o status de conservação da ave"
+
+      - name: sgk_reino_biogeografico
+        description: "Chave estrangeira referenciando o reino biogeográfico da ave"
+        tests:
+          - not_null
+
+      - name: is_alcance_global_restrito
+        description: >
+          Indica se o alcance global do pássaro é restrito (booleano).
+          Isso significa que a espécie ocorre em uma área menor que 50.000 km² no mundo todo.
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
+      - name: is_reproducao_restrita_ilhas
+        description: >
+          Indica se a reprodução do pássaro é restrita a ilhas (booleano).
+          Isso significa que a espécie se reproduz exclusivamente em ilhas.
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      
+      - name: id_faixa_latitudinal
+        description: "Chave estrangeira referenciando a faixa latitudinal do pássaro"
+        tests:
+          - not_null

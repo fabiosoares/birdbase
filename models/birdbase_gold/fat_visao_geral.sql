@@ -2,25 +2,25 @@
 {{
   config(
 	materialized='view',
-	unique_key='id_passaro',
+	unique_key='id_ave',
 	tags=['birdbase', 'fat']
   )
 }}
 
 SELECT
-    fat_passaros.id_passaro,
-    fat_passaros.sgk_ordem,
+    fat_aves.id_ave,
+    fat_aves.sgk_ordem,
     dim_ordens.tp_ordem_latin AS tp_ordem_latin,
     dim_ordens.ds_ordem AS ds_ordem,
-    fat_passaros.nm_cientifico  AS nm_cientifico,
+    fat_aves.nm_cientifico  AS nm_cientifico,
     CONCAT(dim_ordens.tp_ordem_latin, ' (',dim_ordens.ds_ordem,')') AS tp_ds_ordem,
-    fat_passaros.tp_familia,
-    fat_passaros.tp_genero,
-    fat_passaros.tp_especie
+    fat_aves.tp_familia,
+    fat_aves.tp_genero,
+    fat_aves.tp_especie
 FROM
-  {{ ref('fat_passaros') }} fat_passaros
+  {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
-    ON fat_passaros.sgk_ordem = dim_ordens.sgk_ordem
+    ON fat_aves.sgk_ordem = dim_ordens.sgk_ordem
 
 
 

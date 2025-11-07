@@ -1,0 +1,18 @@
+---
+version: 2
+
+models:
+  - name: dim_faixa_latitudinal
+    description: >
+      Tabela de dimensão de faixas latitudinais. Campo de origem: LAT
+      Insert manual
+    columns:
+      - name: id_faixa_latitudinal
+        description: "Chave única da faixa latitudinal"
+        tests:
+          - not_null
+          - unique
+      - name: tp_faixa_latitudinal
+        description: "Tipo da faixa latitudinal"
+        tests:
+          - not_null
