@@ -6,6 +6,7 @@ create schema if not exists {{target.schema}};
 -- genéricas
 {{removerAcentos()}};
 {{tratarCamposTp()}};
+{{tratarNumerico()}};
 
 
 {% endmacro %}
