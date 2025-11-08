@@ -14,7 +14,7 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 - Para criação de novos modelos SQL, utilize o dbt
 - Use o padrão de nomenclatura snake_case para nomes de arquivos e pastas
 - Use o padrão de nomenclatura nome_do_cliente antes do nome dos modelos específicos SQL
-- Use o padrão de nomenclatura ft_ para tabelas fatos
+- Use o padrão de nomenclatura fat_ para tabelas fatos
 - Use o padrão de nomenclatura dim_ para tabelas dimensões
 - Use o padrão de nomenclatura de campos em snake_case
 - Use o prefixo id_ para chaves primárias e estrangeiras
@@ -40,14 +40,14 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 ### Estrutura e Organização
 
 #### UDFS
-- Crie um novo repository no diretório `alchemy/omni_dw/macros/udfs/`
+- Crie um novo repository no diretório `birdbase/macros/udfs/`
 - Caso seja uma udfs específica, crie um subdiretório com o nome do modelo
 - Utilize jinja, sql ou python para criar a udfs
 - Utilize snake case para nomear arquivos e pastas e variáveis
 - Use camel case para nomear a macro/função
 
 #### Models
-- Crie um novo diretório para cada novo dataset no diretório `alchemy/omni_dw/models`
+- Crie um novo diretório para cada novo dataset no diretório `birdbasemodels`
 - Utilize o arquivo `.yml` para documentar e criar testes para os modelos
 - Os arquivos `.sql` contém o mesmo nome dos arquivos `.yml`
 - Os arquivos `source.yml` estão presentes em cada diretório de dataset e contém as referências das tabelas fontes
@@ -57,7 +57,7 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 - Sempre descreva o modelo e as colunas no arquivo `.yml`
 
 #### Tests
-- Crie um novo diretório para cada novo dataset no diretório `alchemy/omni_dw/tests`
+- Crie um novo diretório para cada novo dataset no diretório `birdbase/tests`
 - Utilize o arquivo `.sql` para criar testes customizados
 - Utilize snake case para nomear arquivos e pastas e variáveis
 - Utilize o padrão de nomenclatura teste_nome_do_teste.sql
@@ -67,12 +67,6 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 
 ## Mensagens de Commit
 - Use o padrão de commit convencional
-- Ao gerar comandos de commit, extrair automaticamente a chave JIRA (ex: feature/DAD-xxxx será DAD-xxxx) da branch atual e incluí-la na mensagem de commit
-- Sugerir rodar o comando abaixo para extrair a chave JIRA da branch atual:
-```terminal
-branch=$(git branch --show-current) && echo "Branch atual: $branch" && jira_key=$(echo $branch | grep -o -E '(RIH|DAD)-[0-9]+') && echo "Chave JIRA detectada: $jira_key"
-```
-- Se não conseguir determinar a chave JIRA, perguntar ao usuário
 - Use o seguinte formato para mensagens de commit:
   - `feat(context): descrição da nova funcionalidade`
   - `fix(context): descrição do bug corrigido`

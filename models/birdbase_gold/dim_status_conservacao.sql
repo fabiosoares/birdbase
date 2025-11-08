@@ -16,6 +16,8 @@ WITH tbl_base AS (
     UNION ALL
     SELECT 'CR_PEW', 'CR (PEW)', 'Possibly Extinct in the Wild', 'Possivelmente Extinto na Natureza'
     UNION ALL
+    SELECT 'CR_PE', 'CR (PE)', 'Possibly Extinct', 'Possivelmente Extinto'
+    UNION ALL
     SELECT 'EN', 'EN', 'Endangered', 'Em Perigo'
     UNION ALL
     SELECT 'VU', 'VU', 'Vulnerable', 'Vulnerável'

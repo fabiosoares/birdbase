@@ -23,7 +23,6 @@ SELECT
     CAST(d.rr AS BOOLEAN) AS is_alcance_global_restrito,
     CAST(d.isl AS BOOLEAN) AS is_reproducao_restrita_ilhas,
     dim_faixa_latitudinal.id_faixa_latitudinal
-    
 
 FROM
   {{ source( 'birdbase_bronze',
@@ -33,7 +32,7 @@ LEFT JOIN {{ ref('dim_status_conservacao') }} dim_status_conservacao
     ON d.2024_iucn_red_list_category = dim_status_conservacao.tp_status_conservacao
     OR (d.2024_iucn_red_list_category IS NULL AND dim_status_conservacao.sgk_status_conservacao = 'NULL')
 LEFT JOIN {{ ref('dim_reino_biogeografico') }} dim_reino_biogeografico
-    ON d.rlm = dim_reino_biogeografico.tp_reino_biogeografico
+    ON UPPER(d.rlm) = dim_reino_biogeografico.tp_reino_biogeografico
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
     ON d.order = dim_ordens.tp_ordem_latin
 LEFT JOIN {{ ref('dim_faixa_latitudinal') }} dim_faixa_latitudinal

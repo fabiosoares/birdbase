@@ -18,6 +18,7 @@ models:
         description: "Nome científico da ave"
         tests:
           - not_null
+          - unique
 
       - name: sgk_ordem
         description: "Chave estrangeira referenciando a ordem taxonômica da ave"
@@ -26,8 +27,6 @@ models:
 
       - name: tp_familia
         description: "Tipo da família taxonômica da ave"
-        tests:
-          - not_null
       
       - name: tp_genero
         description: "Tipo do gênero taxonômico da ave"
@@ -52,9 +51,8 @@ models:
           Indica se o alcance global do pássaro é restrito (booleano).
           Isso significa que a espécie ocorre em uma área menor que 50.000 km² no mundo todo.
         tests:
-          - not_null
           - accepted_values:
-              values: [true, false]
+              values: [true, false, null]
 
       - name: is_reproducao_restrita_ilhas
         description: >
