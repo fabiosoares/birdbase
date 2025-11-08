@@ -67,3 +67,76 @@ models:
         description: "Chave estrangeira referenciando a faixa latitudinal do pássaro"
         tests:
           - not_null
+
+      # 4. Habitat e Dieta
+      - name: is_habitat_florestal
+        description: >
+          Indica se o habitat principal da ave é florestal (booleano).
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false] 
+
+      - name: is_habitat_bambu
+        description: "Booleano. Indica se 'bambu' está listado como habitat no registro."
+      - name: is_habitat_bosque
+        description: "Booleano. Indica se 'bosque' está listado como habitat no registro."
+      - name: is_habitat_arbustos
+        description: "Booleano. Indica se 'arbustos' está listado como habitat no registro."
+      - name: is_habitat_savana
+        description: "Booleano. Indica se 'savana' está listado como habitat no registro."
+      - name: is_habitat_pastagens
+        description: "Booleano. Indica se 'pastagens' está listado como habitat no registro."
+      - name: is_habitat_planicies
+        description: "Booleano. Indica se 'planícies' está listado como habitat no registro."
+      - name: is_habitat_areas_rochosas
+        description: "Booleano. Indica se 'áreas rochosas' está listado como habitat no registro."
+      - name: is_habitat_artificial
+        description: "Booleano. Indica se ambientes artificiais estão listados como habitat no registro."
+      - name: is_habitat_riparia
+        description: "Booleano. Indica se 'ripária' (margem de corpos d'água) está listada como habitat no registro."
+      - name: is_habitat_costa_maritma
+        description: "Booleano. Indica se 'costa/marítima' está listada como habitat no registro."
+      - name: is_habitat_zonas_umidas
+        description: "Booleano. Indica se zonas úmidas estão listadas como habitat no registro."
+      - name: is_habitat_mar_aberto
+        description: "Booleano. Indica se 'mar aberto' está listado como habitat no registro."
+      - name: is_habitat_outros
+        description: "Booleano. Indica se o habitat foi classificado como 'outros' no registro."
+      - name: ds_habitat_outros
+        description: "Booleano. Flag que indica presença de descrição adicional para 'outros' habitats (campo d.o_desc convertido para booleano)."
+      - name: nm_habitat_principal
+        description: "Texto. Nome do habitat primário informado no registro (campo d.primary_habitat)."
+      - name: qtd_habitats_principais
+        description: "Inteiro. Quantidade de habitats principais associados ao registro (campo d.hb)."
+      # 4.2 Dieta
+      - name: sgk_dieta
+        description: "Chave estrangeira referenciando a dieta primária da ave"
+        tests:
+          - not_null
+      - name: vl_dieta_peso_invertebrados
+        description: "Valor percentual do peso da dieta composto por invertebrados"
+      - name: vl_dieta_peso_frutas
+        description: "Valor percentual do peso da dieta composto por frutas"
+      - name: vl_dieta_peso_nectar
+        description: "Valor percentual do peso da dieta composto por néctar"
+      - name: vl_dieta_peso_sementes
+        description: "Valor percentual do peso da dieta composto por sementes"
+      - name: vl_dieta_peso_vertebrados_terrestres
+        description: "Valor percentual do peso da dieta composto por vertebrados terrestres"
+      - name: vl_dieta_peso_peixes
+        description: "Valor percentual do peso da dieta composto por peixes"
+      - name: vl_dieta_peso_carniceiros
+        description: "Valor percentual do peso da dieta composto por carniceiros"
+      - name: vl_dieta_peso_vegetal_nao_reprodutivo
+        description: "Valor percentual do peso da dieta composto por material vegetal não reprodutivo"
+      - name: vl_dieta_peso_diversificada
+        description: "Valor percentual do peso da dieta composto por diversos"
+      - name: vl_dieta_ponderada_total
+        description: "Valor percentual do peso da dieta composto por outros itens"
+      - name: ds_dieta
+        description: "Descrição adicional da dieta informada no registro"
+      - name: qtd_tp_alimentos_principais_consumidos
+        description: "Quantidade de tipos de alimentos principais consumidos pela ave"
+      - name: nr_esi_indice_especializacao_ecologica
+

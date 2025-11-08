@@ -54,3 +54,7 @@ Traduzir as ordens de pássaros abaixo para o portugues brasil: 'Struthioniforme
 | **Passeriformes**       | Passarinhos em geral (pardais, canários, sabiás etc.) |
 
 Com os dados acima, crie um select onde a ordem (latin) vá para o campos sgk_ordem e tp_ordem_latin, e o 'Nome comum em português (Brasil)' vá para o campo ds_ordem
+
+# dim_dieta
+
+Crie um select com os dados da lista: ['Herbivore' 'Plant' 'Invertebrate' 'Fruit' 'Omnivore' 'Seed' 'Fish' 'Nectar' 'Carnivore' 'Vertebrate' 'No Information' 'Ovivore' 'Scavenger' 'Beeswax'] campo: sgk_dieta (valores da lista), tp_dieta_ingles(valores da lista), tp_dieta_portugues(valores da lista traduzido para pt br)

@@ -1,0 +1,23 @@
+---
+version: 2
+
+models:
+  - name: dim_dietas
+    description: >
+      Tabela de dimensão de dietas. Campo de origem: primary_diet
+      Insert com llm, prompt na documentação.
+    columns:
+      - name: sgk_dieta
+        description: "Chave única da dieta"
+        tests:
+          - not_null
+          - unique
+      - name: tp_dieta_ingles
+        description: "Tipo da dieta (inglês)"
+        tests:
+          - not_null
+      - name: tp_dieta_portugues
+        description: "Tipo da dieta (português)"
+        tests:
+          - not_null
+          - unique

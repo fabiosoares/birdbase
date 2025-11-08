@@ -20,7 +20,7 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 - Use o prefixo id_ para chaves primárias e estrangeiras
 - Use o prefixo dt_ para campos de data
 - Use o prefixo vl_ para campos de valor monetário
-- Use o prefixo qt_ para campos de quantidade
+- Use o prefixo qtd_ para campos de quantidade
 - Use o prefixo nm_ para campos de nome
 - Use o prefixo ds_ para campos de descrição
 - Use o prefixo cod_ para campos de código
@@ -47,7 +47,7 @@ Este repositório contém scripts SQL e utiliza o BigQuery como data warehouse.
 - Use camel case para nomear a macro/função
 
 #### Models
-- Crie um novo diretório para cada novo dataset no diretório `birdbasemodels`
+- Crie um novo diretório para cada novo dataset no diretório `birdbase/models`
 - Utilize o arquivo `.yml` para documentar e criar testes para os modelos
 - Os arquivos `.sql` contém o mesmo nome dos arquivos `.yml`
 - Os arquivos `source.yml` estão presentes em cada diretório de dataset e contém as referências das tabelas fontes
