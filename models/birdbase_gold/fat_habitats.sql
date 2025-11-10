@@ -28,6 +28,8 @@ SELECT
     fat_aves.is_habitat_zonas_umidas,
     fat_aves.is_habitat_mar_aberto,
     fat_aves.is_habitat_outros,
+    fat_aves.nm_habitat_principal,
+    fat_aves.qtd_habitats_principais,
 FROM
   {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
