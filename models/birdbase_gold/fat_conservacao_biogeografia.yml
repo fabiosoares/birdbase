@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: ft_conservacao_biogeografia
+  - name: fat_conservacao_biogeografia
     description: >
       Tabela fato que agrega informações sobre o status de conservação
       e a biogeografia dos pássaros, incluindo seus reinos biogeográficos

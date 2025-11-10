@@ -1,4 +1,4 @@
--- dbt run --select ft_conservacao_biogeografia
+-- dbt run --select fat_conservacao_biogeografia
 {{
   config(
 	materialized='view',

@@ -1,0 +1,53 @@
+---
+version: 2
+
+models:
+  - name: fat_habitats
+    description: >
+      Tabela fato que agrega informações detalhadas sobre os pássaros,
+      incluindo suas características biológicas
+      - name: id_ave
+        description: "Chave única da ave"
+        tests:
+          - not_null
+          - unique
+      - name: sgk_ordem
+        description: "Chave estrangeira para a ordem da ave"
+        tests:
+          - not_null
+      - name: tp_ordem_latin
+        description: "Nome científico da ordem da ave"
+      - name: ds_ordem
+        description: "Composição da ordem da ave"
+      - name: nm_cientifico
+        description: "Nome científico da ave"
+      - name: tp_ds_ordem
+        description: "Combinação do nome científico e descrição da ordem"
+      - name: is_habitat_forestal
+        description: "Indica se o habitat da ave é florestal"
+      - name: is_habitat_bambu
+        description: "Indica se o habitat da ave é bambu"
+      - name: is_habitat_bosque
+        description: "Indica se o habitat da ave é bosque"
+      - name: is_habitat_arbustos
+        description: "Indica se o habitat da ave é arbustos"
+      - name: is_habitat_savana
+        description: "Indica se o habitat da ave é savana"
+      - name: is_habitat_pastagens
+        description: "Indica se o habitat da ave é pastagens"
+      - name: is_habitat_planicies
+        description: "Indica se o habitat da ave é planícies"
+      - name: is_habitat_areas_rochosas
+        description: "Indica se o habitat da ave é áreas rochosas"
+      - name: is_habitat_artificial
+        description: "Indica se o habitat da ave é artificial"
+      - name: is_habitat_riparia
+        description: "Indica se o habitat da ave é ripária"
+      - name: is_habitat_costa_maritma
+        description: "Indica se o habitat da ave é costa marítima"
+      - name: is_habitat_zonas_umidas
+        description: "Indica se o habitat da ave é zonas úmidas"
+      - name: is_habitat_mar_aberto
+        description: "Indica se o habitat da ave é mar aberto"
+      - name: is_habitat_outros
+        description: "Indica se o habitat da ave é outros"
