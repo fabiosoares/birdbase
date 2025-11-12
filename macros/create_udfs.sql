@@ -7,6 +7,9 @@ create schema if not exists {{target.schema}};
 {{removerAcentos()}};
 {{tratarCamposTp()}};
 {{tratarNumerico()}};
+-- específicas birdbase
+{{tratarCampoComportamental()}};
+{{tratarCampoSexoIncubacao()}};
 
 
 {% endmacro %}

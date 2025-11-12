@@ -105,8 +105,8 @@ models:
         description: "Booleano. Indica se o habitat foi classificado como 'outros' no registro."
       - name: ds_habitat_outros
         description: "Booleano. Flag que indica presença de descrição adicional para 'outros' habitats (campo d.o_desc convertido para booleano)."
-      - name: nm_habitat_principal
-        description: "Texto. Nome do habitat primário informado no registro (campo d.primary_habitat)."
+      - name: sgk_habitat_principal
+        description: "Chave estrangeira referenciando o habitat principal da ave"
       - name: qtd_habitats_principais
         description: "Inteiro. Quantidade de habitats principais associados ao registro (campo d.hb)."
       # 4.2 Dieta
@@ -139,4 +139,26 @@ models:
       - name: qtd_tp_alimentos_principais_consumidos
         description: "Quantidade de tipos de alimentos principais consumidos pela ave"
       - name: nr_esi_indice_especializacao_ecologica
+
+      # 5.1 Comportamento Social
+      - name: is_comportamento_colonial
+        description: "Indica se o comportamento social da ave é colonial (booleano)."
+      - name: is_comportamento_forma_bando
+        description: "Indica se o comportamento social da ave é formar bando (booleano)."
+      - name: is_comportamento_pares_grupos_familiares
+        description: "Indica se o comportamento social da ave é viver em pares ou grupos familiares (booleano)."
+      - name: is_comportamento_solitario_pares
+        description: "Indica se o comportamento social da ave é viver solitário ou em pares (booleano)."
+      - name: is_comportamento_solitario
+        description: "Indica se o comportamento social da ave é solitário (booleano)."
+      - name: is_comportamento_exibicao_cortejo_grupo
+        description: "Indica se o comportamento social da ave inclui exibição ou cortejo em grupo (booleano)."
+      - name: is_monogamia
+        description: "Indica se o padrão de acasalamento da ave é monogâmico (booleano)."
+      - name: is_poligamia
+        description: "Indica se o padrão de acasalamento da ave é poligâmico (booleano)."
+      - name: is_criacao_cooperativa
+        description: "Indica se o padrão de criação da ave é cooperativo (booleano)." 
+      
+      # 5.2 Reprodução
 

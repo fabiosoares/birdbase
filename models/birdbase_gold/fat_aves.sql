@@ -57,8 +57,30 @@ SELECT
     d.desc AS ds_dieta,
     d.db AS qtd_tp_alimentos_principais_consumidos,
     d.esi AS nr_esi_indice_especializacao_ecologica,
-    
-    
+
+    -- 5.1 Comportamento Social
+    {{target.schema}}.tratarCampoComportamental(d.social_1) AS is_comportamento_colonial,
+    {{target.schema}}.tratarCampoComportamental(d.social_2) AS is_comportamento_forma_bando,
+    {{target.schema}}.tratarCampoComportamental(d.social_3) AS is_comportamento_pares_grupos_familiares,
+    {{target.schema}}.tratarCampoComportamental(d.social_4) AS is_comportamento_solitario_pares,
+    {{target.schema}}.tratarCampoComportamental(d.social_5) AS is_comportamento_solitario,
+    {{target.schema}}.tratarCampoComportamental(CAST(d.mono AS STRING)) AS is_monogamia,
+    {{target.schema}}.tratarCampoComportamental(CAST(d.poly AS STRING)) AS is_poligamia,
+    {{target.schema}}.tratarCampoComportamental(CAST(d.coop AS STRING)) AS is_criacao_cooperativa,
+
+    -- 5.2 Reprodução
+    d.brd1 AS nr_ninhada_minima_anual,
+    d.brd2 AS nr_ninhada_maxima_anual,
+    d.clutch_min AS nr_ovos_minimo_por_ninhada,
+    d.clutch_max AS nr_ovos_maximo_por_ninhada,
+    {{target.schema}}.tratarCampoSexoIncubacao(d.incu_sex) AS tp_sexo_incubacao,
+    d.incu1 AS nr_dias_incubacao_minima,
+    d.incu2 AS nr_dias_incubacao_maxima,
+    d.fldg1 AS nr_dias_periodo_fledging_minimo,
+    d.fldg2 AS nr_dias_periodo_fledging_maximo,
+    d.para_1 AS is_parasita_ninho,
+    {{target.schema}}.tratarCampoComportamental(d.para_2) AS is_parasita_ninho_vitima,
+
     
 FROM
   {{ source( 'birdbase_bronze',

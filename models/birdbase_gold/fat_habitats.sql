@@ -31,6 +31,7 @@ SELECT
     dim_habitats_principal.ds_habitat AS ds_habitat_principal,
     dim_habitats_principal.tp_habitat_portugues AS tp_habitat_principal,
     fat_aves.qtd_habitats_principais,
+    fat_aves.nr_esi_indice_especializacao_ecologica
 FROM
   {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens

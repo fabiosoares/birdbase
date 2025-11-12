@@ -51,3 +51,5 @@ models:
         description: "Indica se o habitat da ave é mar aberto"
       - name: is_habitat_outros
         description: "Indica se o habitat da ave é outros"
+      - name: nr_esi_indice_especializacao_ecologica
+        description: "Índice de especialização ecológica da ave"
