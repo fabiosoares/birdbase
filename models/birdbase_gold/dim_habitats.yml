@@ -1,0 +1,23 @@
+---
+version: 2
+
+models:
+  - name: dim_habitats
+    description: >
+      Tabela de dimensão de habitats. Campo de origem: primary_habitat
+    columns:
+      - name: sgk_habitat
+        description: "Chave única do habitat"
+        tests:
+          - not_null
+          - unique
+      - name: tp_habitat_ingles
+        description: "Tipo de habitat em inglês"
+      - name: tp_habitat_portugues
+        description: "Tipo de habitat em português"
+      - name: sg_habitat
+        description: "Sigla do habitat"
+      - name: ds_habitat
+        description: "Descrição do habitat"
+        tests:
+          - not_null 

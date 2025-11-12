@@ -38,7 +38,7 @@ SELECT
     CAST(d.se AS INTEGER) AS is_habitat_mar_aberto,
     CAST(d.o AS INTEGER) AS is_habitat_outros,
     d.o_desc AS ds_habitat_outros,
-    d.primary_habitat AS nm_habitat_principal,
+    dim_habitats_principal.sgk_habitat AS sgk_habitat_principal,
     d.hb AS qtd_habitats_principais,
 
     -- 4.2 Dieta
@@ -59,6 +59,7 @@ SELECT
     d.esi AS nr_esi_indice_especializacao_ecologica,
     
     
+    
 FROM
   {{ source( 'birdbase_bronze',
     'data' ) }} d
@@ -74,6 +75,8 @@ LEFT JOIN {{ ref('dim_faixa_latitudinal') }} dim_faixa_latitudinal
     ON d.lat = dim_faixa_latitudinal.id_faixa_latitudinal
 LEFT JOIN {{ ref('dim_dietas') }} dim_dietas
     ON d.primary_diet = dim_dietas.tp_dieta_ingles
+LEFT JOIN {{ ref('dim_habitats') }} dim_habitats_principal
+    ON d.primary_habitat = dim_habitats_principal.tp_habitat_ingles
 
 
 

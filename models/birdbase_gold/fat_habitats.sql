@@ -28,12 +28,15 @@ SELECT
     fat_aves.is_habitat_zonas_umidas,
     fat_aves.is_habitat_mar_aberto,
     fat_aves.is_habitat_outros,
-    fat_aves.nm_habitat_principal,
+    dim_habitats_principal.ds_habitat AS ds_habitat_principal,
+    dim_habitats_principal.tp_habitat_portugues AS tp_habitat_principal,
     fat_aves.qtd_habitats_principais,
 FROM
   {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
     ON fat_aves.sgk_ordem = dim_ordens.sgk_ordem
+LEFT JOIN {{ ref('dim_habitats') }} dim_habitats_principal
+    ON fat_aves.sgk_habitat_principal = dim_habitats_principal.sgk_habitat
 
 
 
