@@ -21,30 +21,24 @@ def extract_bird_data(html_content):
 
     # 1. Encontrar todos os elementos de nome científico
     # Tag: <span class="Heading-sub Heading-sub--inline Heading-sub--sci">
-    scientific_name_tags = soup.find_all('span', class_='Heading-sub--sci')
+    # scientific_name_tags = soup.find_all('span', class_='Heading-sub--sci')
+    bird_cards = soup.find_all('li', class_='TaxonomyTree-card')
 
-    for name_tag in scientific_name_tags:
-        nm_cientifico = name_tag.text.strip()
-        
-        # 2. Tentar encontrar a tag <img> associada.
-        # No HTML de exemplo, a tag <img> está logo antes da tag <span>.
-        # Vamos procurar o elemento anterior.
-        
-        # O elemento anterior direto pode ser um NavigableString (espaço em branco).
-        # Usamos .find_previous_sibling('img') para encontrar a tag <img> anterior.
-        image_tag = name_tag.find_previous_sibling('img')
-        
+    for card in bird_cards:
+        name_tag = card.find('span', class_='Heading-sub--sci')
+        image_tag = card.find('img')
+
+        if name_tag:
+            nm_cientifico = name_tag.text.strip()
+        else:
+            nm_cientifico = None
+
         ds_caminho_imagem_ave = None
         if image_tag:
-            # O usuário solicitou o 'src' de tags como <img alt="Common Ostrich" ... src="...">
-            # O HTML de exemplo tem tags <img> com 'src' e 'data-src'.
-            # Vou priorizar o 'src' conforme o exemplo do usuário, mas o 'data-src'
-            # é mais comum para imagens lazy-loaded. Vou usar 'src' se existir, senão 'data-src'.
             ds_caminho_imagem_ave = image_tag.get('src')
             if not ds_caminho_imagem_ave:
                 ds_caminho_imagem_ave = image_tag.get('data-src')
-        
-        # Se encontrarmos os dois, adicionamos à lista
+
         if nm_cientifico and ds_caminho_imagem_ave:
             bird_data.append({
                 "ds_caminho_imagem_ave": ds_caminho_imagem_ave,
