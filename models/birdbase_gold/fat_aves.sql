@@ -81,6 +81,9 @@ SELECT
     d.para_1 AS is_parasita_ninho,
     {{target.schema}}.tratarCampoComportamental(d.para_2) AS is_parasita_ninho_vitima,
 
+    -- 6 Movimento
+    
+
     
 FROM
   {{ source( 'birdbase_bronze',
