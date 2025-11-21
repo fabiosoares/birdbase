@@ -82,7 +82,13 @@ SELECT
     {{target.schema}}.tratarCampoComportamental(d.para_2) AS is_parasita_ninho_vitima,
 
     -- 6 Movimento
-    
+
+    sgk_migracao AS sgk_migracao,
+    CAST(d.alt AS INTEGER) AS is_migracao_altitudinal_elevacional,
+    CAST(d.irreg AS INTEGER) AS is_movimento_irregular,
+    CAST(d.disp AS INTEGER) AS is_dispersao_longa_distancia,
+    CAST(d.sed AS INTEGER) AS is_sedentario,
+
 
     
 FROM
@@ -102,7 +108,10 @@ LEFT JOIN {{ ref('dim_dietas') }} dim_dietas
     ON d.primary_diet = dim_dietas.tp_dieta_ingles
 LEFT JOIN {{ ref('dim_habitats') }} dim_habitats_principal
     ON d.primary_habitat = dim_habitats_principal.tp_habitat_ingles
-
+-- LEFT JOIN {{ ref('dim_voos') }} dim_voos
+--     ON CAST(d.flightlessness AS INTEGER) = dim_voos.nr_voo
+LEFT JOIN {{ ref('dim_migracoes') }} dim_migracoes
+    ON CAST(d.mig AS INTEGER) = dim_migracoes.nr_migracao
 
 
 

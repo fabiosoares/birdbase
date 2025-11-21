@@ -1,0 +1,22 @@
+---
+version: 2
+
+models:
+  - name: dim_voos
+    description: >
+      Tabela de dimensão de voos de aves.
+    columns:
+      - name: sgk_voo
+        description: "Chave única do voo"
+        tests:
+          - not_null
+          - unique
+      - name: tp_voo
+        description: "Tipo do voo"
+        tests:
+          - not_null
+      - name: ds_voo
+        description: "Descrição do voo"
+        tests:
+          - not_null
+          - unique

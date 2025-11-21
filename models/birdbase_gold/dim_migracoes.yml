@@ -1,0 +1,28 @@
+---
+version: 2
+
+models:
+  - name: dim_migracoes
+    description: >
+      Tabela de dimensão de migrações de aves.
+    columns:
+      - name: sgk_migracao
+        description: "Chave única da migração"
+        tests:
+          - not_null
+          - unique
+      - name: nr_migracao
+        description: >
+          Número da migração, onde 0 = Não migrante, 1 = Migrante, 2 = Migrante parcial.
+          Referente a tabela original (campo mig).
+        tests:
+          - not_null
+      - name: tp_migracao
+        description: "Tipo da migração"
+        tests:
+          - not_null
+      - name: ds_migracao
+        description: "Descrição da migração"
+        tests:
+          - not_null
+          - unique
