@@ -11,6 +11,7 @@ create schema if not exists {{target.schema}};
 -- específicas birdbase
 {{tratarCampoComportamental()}};
 {{tratarCampoSexoIncubacao()}};
+{{getIdVoo()}};
 
 
 {% endmacro %}
