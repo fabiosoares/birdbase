@@ -8,10 +8,10 @@
 }}
 
 WITH tbl_base AS (
-    SELECT '1' AS sgk_voo, 'SIM' AS tp_voo, 'Voa' AS ds_voo,
+    SELECT '1' AS sgk_voo, 'SIM' AS tp_voo, 'VOA' AS ds_voo,
     UNION ALL
-    SELECT '2' AS sgk_voo, 'NAO' AS tp_voo, 'Não voa' AS ds_voo,
+    SELECT '2' AS sgk_voo, 'NAO' AS tp_voo, 'NÃO VOA' AS ds_voo,
     UNION ALL
-    SELECT '3' AS sgk_voo, 'PARCIAL' AS tp_voo, 'Voo parcial/subespécies não voadoras' AS ds_voo
+    SELECT '3' AS sgk_voo, 'PARCIAL' AS tp_voo, 'VOO PARCIAL/SUBESPÉCIES NÃO VOADORAS' AS ds_voo
 )
 SELECT * FROM tbl_base

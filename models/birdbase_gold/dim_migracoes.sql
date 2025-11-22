@@ -8,10 +8,12 @@
 }}
 
 WITH tbl_base AS (
-    SELECT '1' AS sgk_migracao, 0 AS nr_migracao, 'NAO' AS tp_migracao, 'Não migrante' AS ds_migracao,
+    SELECT '1' AS sgk_migracao, 0 AS nr_migracao, 'NAO' AS tp_migracao, 'NÃO MIGRANTE' AS ds_migracao,
     UNION ALL
-    SELECT '2' AS sgk_migracao, 1 AS nr_migracao, 'SIM' AS tp_migracao, 'Migrante' AS ds_migracao,
+    SELECT '2' AS sgk_migracao, 1 AS nr_migracao, 'SIM' AS tp_migracao, 'MIGRANTE' AS ds_migracao,
     UNION ALL
-    SELECT '3' AS sgk_migracao, 2 AS nr_migracao, 'PARCIAL' AS tp_migracao, 'Migrante parcial' AS ds_migracao
+    SELECT '3' AS sgk_migracao, 2 AS nr_migracao, 'PARCIAL' AS tp_migracao, 'MIGRANTE PARCIAL' AS ds_migracao
+    UNION ALL
+    SELECT '4' AS sgk_migracao, 4 AS nr_migracao, 'NAO_INFORMADO' AS tp_migracao, 'NÃO INFORMADO' AS ds_migracao
 )
 SELECT * FROM tbl_base

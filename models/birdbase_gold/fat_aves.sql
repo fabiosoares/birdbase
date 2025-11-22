@@ -109,7 +109,7 @@ LEFT JOIN {{ ref('dim_habitats') }} dim_habitats_principal
 LEFT JOIN {{ ref('dim_voos') }} dim_voos
     ON {{target.schema}}.getIdVoo(d.flightlessness) = dim_voos.sgk_voo
 LEFT JOIN {{ ref('dim_migracoes') }} dim_migracoes
-    ON CAST(d.mig AS INTEGER) = dim_migracoes.nr_migracao
+    ON IFNULL(d.mig, 4) = dim_migracoes.nr_migracao
 
 
 
