@@ -7,7 +7,7 @@ AS (
         WHEN UPPER(sexo) LIKE '%B%' THEN 'AMBOS'
         WHEN UPPER(sexo) LIKE '%M%' THEN 'MACHO'
         WHEN UPPER(sexo) LIKE '%F%' THEN 'FEMEA' 
-        ELSE NULL
+        ELSE 'NÃO INFORMADO'
     END
 )
 
