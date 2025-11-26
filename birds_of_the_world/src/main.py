@@ -11,10 +11,15 @@ class BirdsOfTheWorld:
         self.download_images(species)
 
     def download_images(self, species):
+        bird_data_manager = BirdDataManager()
         for e in species:
+            if bird_data_manager.cientific_name_exists(e['nm_cientifico']):
+                print(f"Nome científico '{e['nm_cientifico']}' já exite no arquivo json. Pulando.")
+                continue
+            
             image = Image(e['ds_imagem_url'], e['nm_arquivo'])
             if image.download_image():
-                BirdDataManager().add_bird_data(e['nm_cientifico'], e['ds_imagem_url'], e['nm_arquivo'], e['nm_gcp_path'])
+                bird_data_manager.add_bird_data(e['nm_cientifico'], e['ds_imagem_url'], e['nm_arquivo'], e['nm_gcp_path'])
 
             
 

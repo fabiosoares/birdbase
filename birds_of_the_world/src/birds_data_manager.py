@@ -22,6 +22,14 @@ class BirdDataManager:
         with open(self.filename, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
+    def cientific_name_exists(self, nm_cientifico):
+        """Checks if a scientific name already exists in the JSON file."""
+        data = self._load_data()
+        for entry in data:
+            if entry.get("nm_cientifico") == nm_cientifico:
+                return True
+        return False
+
     def add_bird_data(self, nm_cientifico, ds_imagem_url, nm_arquivo, nm_gcp_path):
         """
         Adds new bird data to the JSON file, preventing duplicates based on scientific name.
@@ -38,10 +46,10 @@ class BirdDataManager:
         data = self._load_data()
         
         # Check for duplicates based on nm_cientifico
-        for entry in data:
-            if entry.get("nm_cientifico") == nm_cientifico:
-                print(f"Scientific name '{nm_cientifico}' already exists. Skipping insertion.")
-                return False # Indicate that no new data was added
+        if self.cientific_name_exists(nm_cientifico):
+            print(f"Scientific name '{nm_cientifico}' already exists. Skipping insertion.")
+            return False # Indicate that no new data was added
+                
 
         new_entry = {
             "nm_cientifico": nm_cientifico,
