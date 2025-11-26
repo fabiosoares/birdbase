@@ -588,12 +588,6 @@
         "nm_gcp_path": "gs://birdbase_birds_of_the_world/myiagra_castaneigularis.jpg"
     },
     {
-        "nm_cientifico": "Myiagra ruficollis",
-        "ds_imagem_url": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/153472671/160",
-        "nm_arquivo": "myiagra_ruficollis.jpg",
-        "nm_gcp_path": "gs://birdbase_birds_of_the_world/myiagra_ruficollis.jpg"
-    },
-    {
         "nm_cientifico": "Myiagra cyanoleuca",
         "ds_imagem_url": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/153472711/160",
         "nm_arquivo": "myiagra_cyanoleuca.jpg",
@@ -628,5 +622,11 @@
         "ds_imagem_url": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/153472821/160",
         "nm_arquivo": "myiagra_eichhorni.jpg",
         "nm_gcp_path": "gs://birdbase_birds_of_the_world/myiagra_eichhorni.jpg"
+    },
+    {
+        "nm_cientifico": "Myiagra ruficollis",
+        "ds_imagem_url": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/153472671/160",
+        "nm_arquivo": "myiagra_ruficollis.jpg",
+        "nm_gcp_path": "gs://birdbase_birds_of_the_world/myiagra_ruficollis.jpg"
     }
 ]
