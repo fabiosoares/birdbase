@@ -40,9 +40,10 @@ class Specie:
             species.append({
                 "nm_cientifico": sci,
                 "nm_cientifico_minusculo": sci.lower(),
-                "nm_cientifico_nm_arquivo": sci.lower().replace(" ", "_"),
+                "nm_arquivo": sci.lower().replace(" ", "_") + ".jpg",
                 "id_imagem": asset,
-                "ds_imagem_url": f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{asset}/160"
+                "ds_imagem_url": f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{asset}/160",
+                "nm_gcp_path": f"gs://birdbase_birds_of_the_world/{sci.lower().replace(' ', '_')}.jpg"
             })
         return species
 
