@@ -4,3 +4,4 @@ dbt_packages/
 logs/
 keys/*.json
 birdbase-venv/
+.venv/

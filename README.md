@@ -50,17 +50,12 @@ apt install python3.12-venv
 **Crie um ambiente virtual Python**
 
 ``` sh
-python3.12 -m venv birdbase-venv
-```
+python3.12 -m venv .venv
 
-source birdbase-venv/bin/activate
+source .venv/bin/activate
 ```
 
 ### Instale as dependências
-
-```sh
-cd seu_projeto
-```
 
 ```sh
 pip3 install -r requirements.txt
