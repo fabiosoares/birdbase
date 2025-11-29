@@ -27,5 +27,5 @@ class ImageUploader:
 
 if __name__ == "__main__":
     uploader = ImageUploader()
-    test_file_path = "images/test_bird_image.jpg"
+    test_file_path = "images/arses_insularis.jpg"
     uploader.upload_image(test_file_path)
