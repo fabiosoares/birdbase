@@ -87,11 +87,17 @@ SELECT
     CAST(d.alt AS INTEGER) AS is_migracao_altitudinal_elevacional,
     CAST(d.irreg AS INTEGER) AS is_movimento_irregular,
     CAST(d.disp AS INTEGER) AS is_dispersao_longa_distancia,
-    CAST(d.sed AS INTEGER) AS is_sedentario
+    CAST(d.sed AS INTEGER) AS is_sedentario,
+
+    -- Imagens
+    images.nm_gcp_path AS nm_gcp_path_image
     
 FROM
   {{ source( 'birdbase_bronze',
     'data' ) }} d
+LEFT JOIN  {{ source( 'birdbase_bronze',
+    'birds_of_the_world_images' ) }} images
+    ON UPPER(d.latin_birdlife_ioc_clements_avilist) = UPPER(images.nm_cientifico)    
 
 LEFT JOIN {{ ref('dim_status_conservacao') }} dim_status_conservacao
     ON d.2024_iucn_red_list_category = dim_status_conservacao.tp_status_conservacao

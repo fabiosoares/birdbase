@@ -9,3 +9,4 @@ sources:
     description: "Dados raw do projeto"
     tables:
       - name: data
+      - name: birds_of_the_world_images
