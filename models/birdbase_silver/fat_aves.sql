@@ -90,7 +90,7 @@ SELECT
     CAST(d.sed AS INTEGER) AS is_sedentario,
 
     -- Imagens
-    images.nm_gcp_path AS nm_gcp_path_image
+    IFNULL(images.nm_gcp_path, 'https://storage.cloud.google.com/birdbase_birds_of_the_world/default.png') AS nm_gcp_path_image
     
 FROM
   {{ source( 'birdbase_bronze',

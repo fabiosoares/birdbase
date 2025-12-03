@@ -1,0 +1,25 @@
+---
+version: 2
+
+models:
+  - name: fat_aves_detalhadas
+    description: >
+      Tabela fato que agrega informações sobre os comportamentos sociais das aves
+      - name: id_ave
+        description: "Chave única da ave"
+        tests:
+          - not_null
+          - unique
+      - name: sgk_ordem
+        description: "Chave estrangeira para a ordem da ave"
+        tests:
+          - not_null
+      - name: tp_ordem_latin
+        description: "Nome científico da ordem da ave"
+      - name: ds_ordem
+        description: "Composição da ordem da ave"
+      - name: nm_cientifico
+        description: "Nome científico da ave"
+      - name: tp_ds_ordem
+        description: "Combinação do nome científico e descrição da ordem"
+      
