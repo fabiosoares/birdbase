@@ -12,7 +12,15 @@ SELECT
     fat_aves.sgk_ordem,
     dim_ordens.tp_ordem_latin AS tp_ordem_latin,
     dim_ordens.ds_ordem AS ds_ordem,
+    fat_aves.tp_familia,
+    fat_aves.tp_genero,
+    fat_aves.tp_especie,
     fat_aves.nm_cientifico  AS nm_cientifico,
+    fat_aves.nm_portugues AS nm_portugues,
+    CASE WHEN fat_aves.nm_portugues IS NOT NULL THEN
+      CONCAT(fat_aves.nm_cientifico, ' (', fat_aves.nm_portugues, ')')
+    ELSE fat_aves.nm_cientifico
+    END AS nm_cientifico_portugues,
     fat_aves.nm_gcp_path_image,
     CONCAT(dim_ordens.tp_ordem_latin, ' (',dim_ordens.ds_ordem,')') AS tp_ds_ordem,
     -- Comportamento Social

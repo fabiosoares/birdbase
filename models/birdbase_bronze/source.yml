@@ -10,3 +10,4 @@ sources:
     tables:
       - name: data
       - name: birds_of_the_world_images
+      - name: aves_nomes_pt_br

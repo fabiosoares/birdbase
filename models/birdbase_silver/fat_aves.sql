@@ -11,6 +11,7 @@ SELECT
     -- 1. Informações Taxonômicas e Nomenclatura
     d.ioc_15_1 AS id_ave,
     d.latin_birdlife_ioc_clements_avilist AS nm_cientifico,
+    aves_nomes_pt_br.nm_portugues AS nm_portugues,
     dim_ordens.sgk_ordem AS sgk_ordem,
     d.family_ioc_15_1 AS tp_familia,
     d.genus AS tp_genero,
@@ -98,7 +99,9 @@ FROM
 LEFT JOIN  {{ source( 'birdbase_bronze',
     'birds_of_the_world_images' ) }} images
     ON UPPER(d.latin_birdlife_ioc_clements_avilist) = UPPER(images.nm_cientifico)    
-
+LEFT JOIN  {{ source( 'birdbase_bronze',
+    'aves_nomes_pt_br' ) }} aves_nomes_pt_br
+    ON UPPER(d.latin_birdlife_ioc_clements_avilist) = UPPER(aves_nomes_pt_br.nm_cientifico)   
 LEFT JOIN {{ ref('dim_status_conservacao') }} dim_status_conservacao
     ON d.2024_iucn_red_list_category = dim_status_conservacao.tp_status_conservacao
     OR (d.2024_iucn_red_list_category IS NULL AND dim_status_conservacao.sgk_status_conservacao = 'NULL')
