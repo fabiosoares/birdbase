@@ -121,12 +121,12 @@ dbt debug
 
 Executar uma tabela - PARTIAL
 ```sh
-dbt run --models nome_da_tabela
+dbt run --select nome_da_tabela
 ```
 
 Executar uma tabela - FULL
 ```sh
-dbt run --full-refresh --models nome_da_tabela
+dbt run --full-refresh --select nome_da_tabela
 ```
 
 Realizar teste de cada coluna baseado no arquivo schema
@@ -136,7 +136,7 @@ dbt test
 
 Realizar testes customizados
 ```sh
-dbt test --models nome_da_tabela --select test_type:singular
+dbt test --select nome_da_tabela
 ```
 
 Gerar uma documentação do projeto na pasta target
