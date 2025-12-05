@@ -15,8 +15,8 @@ models:
         description: "Tipo do voo"
         tests:
           - not_null
+          - unique
       - name: ds_voo
-        description: "Descrição do voo"
+        description: "Descrição do tio de voo"
         tests:
           - not_null
-          - unique

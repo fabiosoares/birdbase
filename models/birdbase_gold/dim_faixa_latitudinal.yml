@@ -16,3 +16,4 @@ models:
         description: "Tipo da faixa latitudinal"
         tests:
           - not_null
+          - unique

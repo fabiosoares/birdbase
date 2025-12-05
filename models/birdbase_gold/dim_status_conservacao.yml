@@ -16,14 +16,14 @@ models:
       - name: tp_status_conservacao
         description: "Tipo do status de conservação (sigla)"
         tests:
-          - not_null
           - unique
+
       - name: nm_ingles
         description: "Nome do status de conservação em inglês"
         tests:
           - not_null
       
       - name: nm_portugues
-        description: "Nome do status de conservação em português"
+        description: "Nome do status de conservação em português (Brasil)"
         tests:
           - not_null

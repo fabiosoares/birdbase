@@ -13,11 +13,20 @@ models:
           - unique
       - name: tp_habitat_ingles
         description: "Tipo de habitat em inglês"
+        tests:
+          - not_null
+          - unique
       - name: tp_habitat_portugues
         description: "Tipo de habitat em português"
+        tests:
+          - not_null
+          - unique
       - name: sg_habitat
         description: "Sigla do habitat"
+        tests:
+          - not_null
+          - unique
       - name: ds_habitat
         description: "Descrição do habitat"
         tests:
-          - not_null 
+          - not_null
