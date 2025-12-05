@@ -22,4 +22,19 @@ models:
         description: "Nome científico da ave"
       - name: tp_ds_ordem
         description: "Combinação do nome científico e descrição da ordem"
-      
+      - name: tp_comportamento_colonial
+        description: ""
+      - name: is_comportamento_forma_bando
+        description: ""
+      - name: is_comportamento_pares_grupos_familiares
+        description: ""
+      - name: tp_comportamento_solitario_pares
+        description: ""
+      - name: tp_comportamento_solitario
+        description: ""
+      - name: tp_comportamento_monogamia
+        description: ""
+      - name: tp_comportamento_poligamia
+        description: ""
+      - name: tp_comportamento_criacao_cooperativa
+        description: ""

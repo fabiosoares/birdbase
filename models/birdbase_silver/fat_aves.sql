@@ -12,6 +12,8 @@ SELECT
     d.ioc_15_1 AS id_ave,
     d.latin_birdlife_ioc_clements_avilist AS nm_cientifico,
     aves_nomes_pt_br.nm_portugues AS nm_portugues,
+    d.english_name_birdlife_ioc_clements_avilist AS nm_ingles,
+    COALESCE(aves_nomes_pt_br.nm_portugues, d.english_name_birdlife_ioc_clements_avilist) AS nm_popular,
     dim_ordens.sgk_ordem AS sgk_ordem,
     d.family_ioc_15_1 AS tp_familia,
     d.genus AS tp_genero,

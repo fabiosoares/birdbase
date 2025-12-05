@@ -15,10 +15,11 @@ SELECT
     fat_aves.tp_familia,
     fat_aves.tp_genero,
     fat_aves.tp_especie,
-    fat_aves.nm_cientifico  AS nm_cientifico,
-    fat_aves.nm_portugues AS nm_portugues,
-    CASE WHEN fat_aves.nm_portugues IS NOT NULL THEN
-      CONCAT(fat_aves.nm_cientifico, ' (', fat_aves.nm_portugues, ')')
+    fat_aves.nm_cientifico,
+    fat_aves.nm_portugues,
+    fat_aves.nm_popular,
+    CASE WHEN fat_aves.nm_popular IS NOT NULL THEN
+      CONCAT(fat_aves.nm_cientifico, ' (', fat_aves.nm_popular, ')')
     ELSE fat_aves.nm_cientifico
     END AS nm_cientifico_portugues,
     fat_aves.nm_gcp_path_image,
