@@ -45,10 +45,23 @@ SELECT
     fat_aves.nr_dias_periodo_fledging_maximo,
     {{ target.schema }}.tratarCampoBoolString(fat_aves.is_parasita_ninho) AS tp_parasita_ninho,
     {{ target.schema }}.tratarCampoBoolString(fat_aves.is_parasita_ninho_vitima) AS tp_parasita_ninho_vitima,
+
+    -- Conservação Biogeográfica
+    dim_status_conservacao.nm_portugues AS nm_status_conservacao,
+    CONCAT(dim_reino_biogeografico.tp_reino_biogeografico, ' - ', dim_reino_biogeografico.nm_portugues) AS nm_reino_biogeografico,
+    {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_alcance_global_restrito AS INTEGER)) AS tp_alcance_restrito,
+    {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_reproducao_restrita_ilhas AS INTEGER)) AS tp_reproducao_restrita_ilhas,
+    dim_faixa_latitudinal.tp_faixa_latitudinal,
 FROM
   {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
     ON fat_aves.sgk_ordem = dim_ordens.sgk_ordem
+LEFT JOIN {{ ref('dim_status_conservacao') }} dim_status_conservacao
+    ON fat_aves.sgk_status_conservacao = dim_status_conservacao.sgk_status_conservacao
+LEFT JOIN {{ ref('dim_reino_biogeografico') }} dim_reino_biogeografico
+    ON fat_aves.sgk_reino_biogeografico = dim_reino_biogeografico.sgk_reino_biogeografico
+LEFT JOIN {{ ref('dim_faixa_latitudinal') }} dim_faixa_latitudinal
+    ON fat_aves.id_faixa_latitudinal = dim_faixa_latitudinal.id_faixa_latitudinal
 
 
 

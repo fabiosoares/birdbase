@@ -20,6 +20,6 @@ models:
           - unique
       
       - name: nm_portugues
-        description: "Nome do reino biogeográfico em português"
+        description: "Nome do reino biogeográfico em português (Brasil)"
         tests:
           - not_null
