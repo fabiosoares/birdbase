@@ -52,6 +52,27 @@ SELECT
     {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_alcance_global_restrito AS INTEGER)) AS tp_alcance_restrito,
     {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_reproducao_restrita_ilhas AS INTEGER)) AS tp_reproducao_restrita_ilhas,
     dim_faixa_latitudinal.tp_faixa_latitudinal,
+
+    -- 4.1 Habitat
+    dim_habitats_principal.ds_habitat AS ds_habitat_principal,
+    dim_habitats_principal.tp_habitat_portugues AS tp_habitat_principal,
+    fat_aves.qtd_habitats_principais,
+    fat_aves.nr_esi_indice_especializacao_ecologica,
+
+    -- 4.2 Dieta
+    fat_aves.ds_dieta,
+    fat_aves.qtd_tp_alimentos_principais_consumidos,
+    dim_dietas.tp_dieta_portugues,
+
+    -- 6 Movimento
+    dim_voos.ds_voo AS ds_voo,
+    dim_migracoes.ds_migracao AS ds_migracao,
+    {{ target.schema }}.tratarCampoBoolString(fat_aves.is_migracao_altitudinal_elevacional) AS tp_migracao_altitudinal_elevacional,
+    {{ target.schema }}.tratarCampoBoolString(fat_aves.is_movimento_irregular) AS tp_movimento_irregular,
+    {{ target.schema }}.tratarCampoBoolString(fat_aves.is_dispersao_longa_distancia) AS tp_dispersao_longa_distancia,
+    {{ target.schema }}.tratarCampoBoolString(fat_aves.is_sedentario) AS tp_sedentario,
+
+
 FROM
   {{ ref('fat_aves') }} fat_aves
 LEFT JOIN {{ ref('dim_ordens') }} dim_ordens
@@ -62,6 +83,18 @@ LEFT JOIN {{ ref('dim_reino_biogeografico') }} dim_reino_biogeografico
     ON fat_aves.sgk_reino_biogeografico = dim_reino_biogeografico.sgk_reino_biogeografico
 LEFT JOIN {{ ref('dim_faixa_latitudinal') }} dim_faixa_latitudinal
     ON fat_aves.id_faixa_latitudinal = dim_faixa_latitudinal.id_faixa_latitudinal
+LEFT JOIN {{ ref('dim_voos') }} dim_voos
+    ON fat_aves.sgk_voo = dim_voos.sgk_voo
+LEFT JOIN {{ ref('dim_migracoes') }} dim_migracoes
+    ON fat_aves.sgk_migracao = dim_migracoes.sgk_migracao
+LEFT JOIN {{ ref('dim_dietas') }} dim_dietas
+    ON fat_aves.sgk_dieta = dim_dietas.sgk_dieta
+LEFT JOIN {{ ref('dim_habitats') }} dim_habitats_principal
+    ON fat_aves.sgk_habitat_principal = dim_habitats_principal.sgk_habitat
+
+
+
+   
 
 
 
