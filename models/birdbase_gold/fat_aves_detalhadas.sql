@@ -48,6 +48,7 @@ SELECT
 
     -- Conservação Biogeográfica
     dim_status_conservacao.nm_portugues AS nm_status_conservacao,
+    dim_status_conservacao.tp_categoria AS tp_categoria_conservacao,
     CONCAT(dim_reino_biogeografico.tp_reino_biogeografico, ' - ', dim_reino_biogeografico.nm_portugues) AS nm_reino_biogeografico,
     {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_alcance_global_restrito AS INTEGER)) AS tp_alcance_restrito,
     {{ target.schema }}.tratarCampoBoolString(CAST(fat_aves.is_reproducao_restrita_ilhas AS INTEGER)) AS tp_reproducao_restrita_ilhas,

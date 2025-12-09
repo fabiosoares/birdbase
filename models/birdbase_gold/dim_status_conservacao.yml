@@ -27,3 +27,8 @@ models:
         description: "Nome do status de conservação em português (Brasil)"
         tests:
           - not_null
+      
+      - name: tp_categoria
+        description: "Categoria do status de conservação em português (Brasil)"
+        tests:
+          - not_null
