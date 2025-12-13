@@ -1,51 +1,81 @@
----
 version: 2
 
 models:
   - name: fat_dietas
     description: >
-      Tabela fato que agrega informações detalhadas sobre os pássaros,
-      incluindo suas características biológicas
+      Fato analítico de aves com foco em dieta, contendo pesos relativos dos
+      diferentes tipos de alimento, indicadores de especialização ecológica
+      e classificação da dieta principal.
+
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação
       - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique
+        description: Identificador único da ave.
+
       - name: sgk_ordem
-        description: "Chave estrangeira para a ordem da ave"
-        tests:
-          - not_null
+        description: Chave substituta da ordem taxonômica.
+
       - name: tp_ordem_latin
-        description: "Nome científico da ordem da ave"
+        description: Nome da ordem taxonômica em latim.
+
       - name: ds_ordem
-        description: "Composição da ordem da ave"
+        description: Nome comum da ordem taxonômica em português.
+
       - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome científico da espécie.
+
       - name: tp_ds_ordem
-        description: "Combinação do nome científico e descrição da ordem"
+        description: Ordem taxonômica formatada (latim + português).
+
+      # Dieta – pesos relativos
       - name: vl_dieta_peso_invertebrados
-        description: "Peso percentual de invertebrados na dieta da ave"
+        description: Peso relativo de invertebrados na dieta.
+
       - name: vl_dieta_peso_frutas
-        description: "Peso percentual de frutas na dieta da ave"
+        description: Peso relativo de frutas na dieta.
+
       - name: vl_dieta_peso_nectar
-        description: "Peso percentual de néctar na dieta da ave"
+        description: Peso relativo de néctar na dieta.
+
       - name: vl_dieta_peso_sementes
-        description: "Peso percentual de sementes na dieta da ave"
+        description: Peso relativo de sementes na dieta.
+
       - name: vl_dieta_peso_vertebrados_terrestres
-        description: "Peso percentual de vertebrados terrestres na dieta da ave"
+        description: Peso relativo de vertebrados terrestres na dieta.
+
       - name: vl_dieta_peso_peixes
-        description: "Peso percentual de peixes na dieta da ave"
+        description: Peso relativo de peixes na dieta.
+
       - name: vl_dieta_peso_carniceiros
-        description: "Peso percentual de carniceiros na dieta da ave"
+        description: Peso relativo de carniça na dieta.
+
       - name: vl_dieta_peso_vegetal_nao_reprodutivo
-        description: "Peso percentual de material vegetal não reprodutivo na dieta da ave"
+        description: Peso relativo de material vegetal não reprodutivo na dieta.
+
       - name: vl_dieta_peso_diversificada
-        description: "Peso percentual de dieta diversificada na dieta da ave"
+        description: Peso relativo de dieta diversificada.
+
       - name: vl_dieta_ponderada_total
-        description: "Peso total ponderado da dieta da ave"
+        description: Soma ponderada total dos pesos de dieta.
+
+      # Dieta – características
       - name: ds_dieta
-        description: "Descrição detalhada da dieta da ave"
+        description: Descrição textual da dieta da espécie.
+
       - name: qtd_tp_alimentos_principais_consumidos
-        description: "Quantidade de tipos principais de alimentos consumidos pela ave"
+        description: Quantidade de tipos principais de alimentos consumidos.
+
+      - name: nr_esi_indice_especializacao_ecologica
+        description: Índice de especialização ecológica (ESI).
+
       - name: tp_dieta_portugues
-        description: "Tipo da dieta (português)"
+        description: Tipo de dieta principal em português.

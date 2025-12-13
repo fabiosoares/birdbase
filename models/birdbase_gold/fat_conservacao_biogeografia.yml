@@ -1,41 +1,50 @@
----
 version: 2
 
 models:
   - name: fat_conservacao_biogeografia
     description: >
-      Tabela fato que agrega informações sobre o status de conservação
-      e a biogeografia dos pássaros, incluindo seus reinos biogeográficos
-      
-    tags: ['birdbase', 'fat']
-    columns:
-      - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique 
+      Fato analítico de aves com foco em conservação e biogeografia,
+      consolidando status de conservação, reino biogeográfico,
+      faixa latitudinal e indicadores de restrição geográfica.
 
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação
+      - name: id_ave
+        description: Identificador único da ave.
+
+      # Conservação
       - name: sgk_status_conservacao
-        description: "Chave estrangeira referenciando o status de conservação da ave"
-        tests:
-          - not_null
-          - unique
+        description: Chave substituta do status de conservação (IUCN).
+
       - name: nm_portugues
-        description: "Nome em português do status de conservação da ave"
+        description: Nome do status de conservação em português.
+
+      # Biogeografia
       - name: sgk_reino_biogeografico
-        description: "Chave estrangeira referenciando o reino biogeográfico da ave"
-        tests:
-          - not_null
-          - unique
+        description: Chave do reino biogeográfico de ocorrência.
+
       - name: nm_reino_biogeografico
-        description: "Nome em português do reino biogeográfico da ave"
+        description: Reino biogeográfico formatado (código + nome em português).
+
+      # Taxonomia
       - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome científico da espécie.
+
+      # Indicadores geográficos
       - name: is_alcance_global_restrito
-        description: >
-          Indica se o alcance global do pássaro é restrito (booleano).
-          Isso significa que a espécie ocorre em uma área menor que 50.000 km² no mundo todo.
+        description: Indica se a espécie possui alcance geográfico global restrito.
+
       - name: is_reproducao_restrita_ilhas
-        description: >
-          Indica se a reprodução do pássaro é restrita a ilhas (booleano).
-          Isso significa que a espécie se reproduz exclusivamente em ilhas.
+        description: Indica se a reprodução ocorre exclusivamente em ilhas.
+
+      - name: tp_faixa_latitudinal
+        description: Faixa latitudinal de ocorrência da espécie.

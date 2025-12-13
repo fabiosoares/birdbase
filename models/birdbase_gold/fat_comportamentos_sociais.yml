@@ -1,40 +1,62 @@
----
 version: 2
 
 models:
   - name: fat_comportamentos_sociais
     description: >
-      Tabela fato que agrega informações sobre os comportamentos sociais das aves
+      Fato analítico de aves com foco exclusivo em comportamento social,
+      consolidando informações taxonômicas básicas e padrões comportamentais
+      a partir da fat_aves e da dimensão de ordens.
+
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação
       - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique
+        description: Identificador único da ave.
+
       - name: sgk_ordem
-        description: "Chave estrangeira para a ordem da ave"
-        tests:
-          - not_null
+        description: Chave substituta da ordem taxonômica.
+
       - name: tp_ordem_latin
-        description: "Nome científico da ordem da ave"
+        description: Nome da ordem taxonômica em latim.
+
       - name: ds_ordem
-        description: "Composição da ordem da ave"
+        description: Nome comum da ordem taxonômica em português.
+
       - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome científico da espécie.
+
       - name: tp_ds_ordem
-        description: "Combinação do nome científico e descrição da ordem"
+        description: Ordem taxonômica formatada (latim + português).
+
+      # Comportamento social
       - name: tp_comportamento_colonial
-        description: ""
+        description: Indica se a espécie apresenta comportamento colonial.
+
       - name: is_comportamento_forma_bando
-        description: ""
+        description: Indica se a espécie forma bandos.
+
       - name: is_comportamento_pares_grupos_familiares
-        description: ""
+        description: Indica ocorrência em pares ou grupos familiares.
+
       - name: tp_comportamento_solitario_pares
-        description: ""
+        description: Indica comportamento solitário em pares.
+
       - name: tp_comportamento_solitario
-        description: ""
+        description: Indica comportamento estritamente solitário.
+
       - name: tp_comportamento_monogamia
-        description: ""
+        description: Indica sistema reprodutivo monogâmico.
+
       - name: tp_comportamento_poligamia
-        description: ""
+        description: Indica sistema reprodutivo poligâmico.
+
       - name: tp_comportamento_criacao_cooperativa
-        description: ""
+        description: Indica criação cooperativa de filhotes.

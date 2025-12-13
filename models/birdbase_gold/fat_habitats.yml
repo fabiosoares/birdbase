@@ -1,55 +1,95 @@
----
 version: 2
 
 models:
   - name: fat_habitats
     description: >
-      Tabela fato que agrega informações detalhadas sobre os pássaros,
-      incluindo suas características biológicas
+      Fato analítico de aves com foco nos habitats ocupados,
+      incluindo indicadores booleanos por tipo de habitat,
+      habitat principal, diversidade de habitats e índice de
+      especialização ecológica.
+
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação
       - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique
+        description: Identificador único da ave.
+
       - name: sgk_ordem
-        description: "Chave estrangeira para a ordem da ave"
-        tests:
-          - not_null
+        description: Chave substituta da ordem taxonômica.
+
       - name: tp_ordem_latin
-        description: "Nome científico da ordem da ave"
+        description: Nome da ordem taxonômica em latim.
+
       - name: ds_ordem
-        description: "Composição da ordem da ave"
+        description: Nome comum da ordem taxonômica em português.
+
       - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome científico da espécie.
+
       - name: tp_ds_ordem
-        description: "Combinação do nome científico e descrição da ordem"
+        description: Ordem taxonômica formatada (latim + português).
+
+      # Indicadores de habitat (booleanos)
       - name: is_habitat_forestal
-        description: "Indica se o habitat da ave é florestal"
+        description: Indica ocorrência em habitats florestais.
+
       - name: is_habitat_bambu
-        description: "Indica se o habitat da ave é bambu"
+        description: Indica ocorrência em habitats dominados por bambu.
+
       - name: is_habitat_bosque
-        description: "Indica se o habitat da ave é bosque"
+        description: Indica ocorrência em bosques.
+
       - name: is_habitat_arbustos
-        description: "Indica se o habitat da ave é arbustos"
+        description: Indica ocorrência em áreas de arbustos.
+
       - name: is_habitat_savana
-        description: "Indica se o habitat da ave é savana"
+        description: Indica ocorrência em savanas.
+
       - name: is_habitat_pastagens
-        description: "Indica se o habitat da ave é pastagens"
+        description: Indica ocorrência em pastagens.
+
       - name: is_habitat_planicies
-        description: "Indica se o habitat da ave é planícies"
+        description: Indica ocorrência em planícies abertas.
+
       - name: is_habitat_areas_rochosas
-        description: "Indica se o habitat da ave é áreas rochosas"
+        description: Indica ocorrência em áreas rochosas.
+
       - name: is_habitat_artificial
-        description: "Indica se o habitat da ave é artificial"
+        description: Indica ocorrência em ambientes artificiais ou antrópicos.
+
       - name: is_habitat_riparia
-        description: "Indica se o habitat da ave é ripária"
+        description: Indica ocorrência em ambientes ripários.
+
       - name: is_habitat_costa_maritma
-        description: "Indica se o habitat da ave é costa marítima"
+        description: Indica ocorrência em zonas costeiras e marítimas.
+
       - name: is_habitat_zonas_umidas
-        description: "Indica se o habitat da ave é zonas úmidas"
+        description: Indica ocorrência em zonas úmidas.
+
       - name: is_habitat_mar_aberto
-        description: "Indica se o habitat da ave é mar aberto"
+        description: Indica ocorrência em mar aberto.
+
       - name: is_habitat_outros
-        description: "Indica se o habitat da ave é outros"
+        description: Indica ocorrência em outros tipos de habitat.
+
+      # Habitat principal
+      - name: ds_habitat_principal
+        description: Descrição textual do habitat principal da espécie.
+
+      - name: tp_habitat_principal
+        description: Tipo de habitat principal em português.
+
+      # Métricas ecológicas
+      - name: qtd_habitats_principais
+        description: Quantidade de habitats principais ocupados pela espécie.
+
       - name: nr_esi_indice_especializacao_ecologica
-        description: "Índice de especialização ecológica da ave"
+        description: Índice de especialização ecológica (ESI).

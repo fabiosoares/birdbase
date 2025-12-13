@@ -1,25 +1,62 @@
----
 version: 2
 
 models:
   - name: fat_voos
     description: >
-      Tabela fato que agrega informações sobre os voos das aves
+      Informações relacionadas ao tipo de voo, migração e padrões
+      de movimento das aves, incluindo comportamento migratório
+      e sedentarismo, associadas à classificação taxonômica.
+
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação
       - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique
+        description: Identificador único da ave.
+
+      # Ordem taxonômica
       - name: sgk_ordem
-        description: "Chave estrangeira para a ordem da ave"
-        tests:
-          - not_null
+        description: Chave substituta da ordem taxonômica.
+
       - name: tp_ordem_latin
-        description: "Nome científico da ordem da ave"
+        description: Nome da ordem taxonômica em latim.
+
       - name: ds_ordem
-        description: "Composição da ordem da ave"
-      - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome comum da ordem taxonômica em português.
+
       - name: tp_ds_ordem
-        description: "Combinação do nome científico e descrição da ordem"
-      
+        description: Ordem taxonômica formatada (latim + português).
+
+      # Nome científico
+      - name: nm_cientifico
+        description: Nome científico da espécie.
+
+      # Voo e migração
+      - name: ds_voo
+        description: Descrição do tipo de voo da espécie.
+
+      - name: ds_migracao
+        description: Descrição do tipo de migração da espécie.
+
+      - name: tp_migracao_altitudinal_elevacional
+        description: >
+          Indica se a espécie realiza migração altitudinal ou elevacional.
+
+      - name: tp_movimento_irregular
+        description: >
+          Indica se a espécie apresenta padrão de movimento irregular.
+
+      - name: tp_dispersao_longa_distancia
+        description: >
+          Indica se a espécie realiza dispersão de longa distância.
+
+      - name: tp_sedentario
+        description: >
+          Indica se a espécie possui comportamento sedentário.
