@@ -29,17 +29,11 @@ clean-targets: # directories to be removed by dbt clean
 # https://docs.getdbt.com/reference/resource-configs/tags
 models:
   birdbase:
-    birdbase_bronze:
-      schema: birdbase_bronze
-      +materialized: table
     birdbase_silver:
       schema: birdbase_silver
       +materialized: table
     birdbase_gold:
       schema: birdbase_gold
-      +materialized: table
-    utils_dw:
-      schema: utils_dw
       +materialized: table
 
     +tags: ["tcc"]

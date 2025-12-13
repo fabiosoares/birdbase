@@ -1,4 +1,4 @@
--- dbt run --select fat_comportamentos_sociais
+-- dbt run --select fat_aves_detalhadas
 {{
   config(
 	materialized='view',

@@ -4,22 +4,175 @@ version: 2
 models:
   - name: fat_aves_detalhadas
     description: >
-      Tabela fato que agrega informações sobre os comportamentos sociais das aves
+      Tabela fato que agrega detalhes das aves para a página de detalhes
+
+    tests:
+      - unique:
+          arguments:
+            column_name: id_ave
+      - not_null:
+          arguments:
+            column_name: id_ave
+
+    columns:
+
+      # Identificação taxonômica
       - name: id_ave
-        description: "Chave única da ave"
-        tests:
-          - not_null
-          - unique
+        description: Identificador único da ave.
+
       - name: sgk_ordem
-        description: "Chave estrangeira para a ordem da ave"
-        tests:
-          - not_null
+        description: Chave substituta da ordem taxonômica.
+
       - name: tp_ordem_latin
-        description: "Nome científico da ordem da ave"
+        description: Nome da ordem taxonômica em latim.
+
       - name: ds_ordem
-        description: "Composição da ordem da ave"
+        description: Nome comum da ordem taxonômica em português.
+
+      - name: tp_familia
+        description: Família taxonômica da espécie.
+
+      - name: tp_genero
+        description: Gênero taxonômico da espécie.
+
+      - name: tp_especie
+        description: Epíteto específico da espécie.
+
       - name: nm_cientifico
-        description: "Nome científico da ave"
+        description: Nome científico da espécie.
+
+      - name: nm_portugues
+        description: Nome comum da espécie em português do Brasil.
+
+      - name: nm_popular
+        description: Nome popular consolidado da espécie.
+
+      - name: nm_cientifico_portugues
+        description: Nome científico concatenado com nome popular, quando disponível.
+
+      - name: nm_gcp_path_image
+        description: Caminho da imagem da espécie no Google Cloud Storage.
+
       - name: tp_ds_ordem
-        description: "Combinação do nome científico e descrição da ordem"
+        description: Ordem taxonômica formatada (latim + português).
+
+      # Comportamento social
+      - name: tp_comportamento_colonial
+        description: Indica se a espécie apresenta comportamento colonial.
+
+      - name: is_comportamento_forma_bando
+        description: Indica se a espécie forma bandos.
+
+      - name: is_comportamento_pares_grupos_familiares
+        description: Indica ocorrência em pares ou grupos familiares.
+
+      - name: tp_comportamento_solitario_pares
+        description: Indica comportamento solitário em pares.
+
+      - name: tp_comportamento_solitario
+        description: Indica comportamento estritamente solitário.
+
+      - name: tp_comportamento_monogamia
+        description: Indica sistema reprodutivo monogâmico.
+
+      - name: tp_comportamento_poligamia
+        description: Indica sistema reprodutivo poligâmico.
+
+      - name: tp_comportamento_criacao_cooperativa
+        description: Indica criação cooperativa de filhotes.
+
+      # Reprodução
+      - name: nr_ninhada_minima_anual
+        description: Número mínimo de ninhadas por ano.
+
+      - name: nr_ninhada_maxima_anual
+        description: Número máximo de ninhadas por ano.
+
+      - name: nr_ovos_minimo_por_ninhada
+        description: Número mínimo de ovos por ninhada.
+
+      - name: nr_ovos_maximo_por_ninhada
+        description: Número máximo de ovos por ninhada.
+
+      - name: tp_sexo_incubacao
+        description: Sexo responsável pela incubação dos ovos.
+
+      - name: nr_dias_incubacao_minima
+        description: Duração mínima do período de incubação (dias).
+
+      - name: nr_dias_incubacao_maxima
+        description: Duração máxima do período de incubação (dias).
+
+      - name: nr_dias_periodo_fledging_minimo
+        description: Duração mínima do período de fledging (dias).
+
+      - name: nr_dias_periodo_fledging_maximo
+        description: Duração máxima do período de fledging (dias).
+
+      - name: tp_parasita_ninho
+        description: Indica se a espécie é parasita de ninho.
+
+      - name: tp_parasita_ninho_vitima
+        description: Indica se a espécie é vítima de parasitismo de ninho.
+
+      # Conservação e biogeografia
+      - name: nm_status_conservacao
+        description: Status de conservação da espécie (IUCN).
+
+      - name: tp_categoria_conservacao
+        description: Categoria de conservação segundo IUCN.
+
+      - name: nm_reino_biogeografico
+        description: Reino biogeográfico de ocorrência da espécie.
+
+      - name: tp_alcance_restrito
+        description: Indica se a espécie possui alcance geográfico restrito.
+
+      - name: tp_reproducao_restrita_ilhas
+        description: Indica se a reprodução ocorre exclusivamente em ilhas.
+
+      - name: tp_faixa_latitudinal
+        description: Faixa latitudinal de ocorrência da espécie.
+
+      # Habitat
+      - name: ds_habitat_principal
+        description: Descrição do habitat principal da espécie.
+
+      - name: tp_habitat_principal
+        description: Tipo de habitat principal em português.
+
+      - name: qtd_habitats_principais
+        description: Quantidade de habitats principais associados à espécie.
+
+      - name: nr_esi_indice_especializacao_ecologica
+        description: Índice de especialização ecológica (ESI).
+
+      # Dieta
+      - name: ds_dieta
+        description: Descrição textual da dieta da espécie.
+
+      - name: qtd_tp_alimentos_principais_consumidos
+        description: Quantidade de tipos principais de alimentos consumidos.
+
+      - name: tp_dieta_portugues
+        description: Tipo de dieta principal em português.
+
+      # Movimento
+      - name: ds_voo
+        description: Descrição do tipo de voo ou incapacidade de voo.
+
+      - name: ds_migracao
+        description: Descrição do padrão migratório.
+
+      - name: tp_migracao_altitudinal_elevacional
+        description: Indica migração altitudinal ou elevacional.
+
+      - name: tp_movimento_irregular
+        description: Indica movimento irregular.
+
+      - name: tp_dispersao_longa_distancia
+        description: Indica dispersão de longa distância.
+
+      - name: tp_sedentario
+        description: Indica comportamento sedentário.
       

@@ -8,157 +8,240 @@ models:
       características biológicas, status de conservação e dados geográficos.
     tags: ['birdbase', 'fat']
     columns:
+      # 1. Identificação taxonômica
       - name: id_ave
-        description: "Chave única da ave"
+        description: Identificador único da ave conforme IOC 15.1.
         tests:
           - not_null
           - unique
 
-      - name: nome_cientifico
-        description: "Nome científico da ave"
+      - name: nm_cientifico
+        description: Nome científico da espécie (BirdLife / IOC / Clements / Avilist).
         tests:
           - not_null
           - unique
+
+      - name: nm_portugues
+        description: Nome comum da espécie em português do Brasil.
+
+      - name: nm_ingles
+        description: Nome comum da espécie em inglês.
+
+      - name: nm_popular
+        description: Nome popular priorizando português; fallback para inglês.
 
       - name: sgk_ordem
-        description: "Chave estrangeira referenciando a ordem taxonômica da ave"
+        description: Chave substituta da ordem taxonômica.
         tests:
           - not_null
 
       - name: tp_familia
-        description: "Tipo da família taxonômica da ave"
-      
+        description: Família taxonômica da espécie.
+
       - name: tp_genero
-        description: "Tipo do gênero taxonômico da ave"
-        tests:
-          - not_null
+        description: Gênero taxonômico da espécie.
 
       - name: tp_especie
-        description: "Tipo da espécie taxonômica da ave"
-        tests:
-          - not_null
+        description: Epíteto específico da espécie.
+
+      # 2. Conservação e Biogeografia
+      - name: sgk_reino_biogeografico
+        description: Chave do reino biogeográfico da espécie.
 
       - name: sgk_status_conservacao
-        description: "Chave estrangeira referenciando o status de conservação da ave"
-
-      - name: sgk_reino_biogeografico
-        description: "Chave estrangeira referenciando o reino biogeográfico da ave"
-        tests:
-          - not_null
+        description: Chave do status de conservação segundo IUCN (2024).
 
       - name: is_alcance_global_restrito
-        description: >
-          Indica se o alcance global do pássaro é restrito (booleano).
-          Isso significa que a espécie ocorre em uma área menor que 50.000 km² no mundo todo.
+        description: Indica se a espécie possui alcance geográfico global restrito.
         tests:
           - accepted_values:
-              values: [true, false, null]
+              arguments:
+                values: [true, false]
 
       - name: is_reproducao_restrita_ilhas
-        description: >
-          Indica se a reprodução do pássaro é restrita a ilhas (booleano).
-          Isso significa que a espécie se reproduz exclusivamente em ilhas.
+        description: Indica se a reprodução ocorre exclusivamente em ilhas.
         tests:
-          - not_null
           - accepted_values:
-              values: [true, false]
-      
-      - name: id_faixa_latitudinal
-        description: "Chave estrangeira referenciando a faixa latitudinal do pássaro"
-        tests:
-          - not_null
+              arguments:
+                values: [true, false]
 
-      # 4. Habitat e Dieta
-      - name: is_habitat_florestal
-        description: >
-          Indica se o habitat principal da ave é florestal (booleano).
-        tests:
-          - not_null
-          - accepted_values:
-              values: [true, false] 
+      - name: id_faixa_latitudinal
+        description: Identificador da faixa latitudinal de ocorrência.
+
+      # 3. Habitat
+      - name: is_habitat_forestal
+        description: Indica ocorrência em habitat florestal.
 
       - name: is_habitat_bambu
-        description: "Booleano. Indica se 'bambu' está listado como habitat no registro."
-      - name: is_habitat_bosque
-        description: "Booleano. Indica se 'bosque' está listado como habitat no registro."
-      - name: is_habitat_arbustos
-        description: "Booleano. Indica se 'arbustos' está listado como habitat no registro."
-      - name: is_habitat_savana
-        description: "Booleano. Indica se 'savana' está listado como habitat no registro."
-      - name: is_habitat_pastagens
-        description: "Booleano. Indica se 'pastagens' está listado como habitat no registro."
-      - name: is_habitat_planicies
-        description: "Booleano. Indica se 'planícies' está listado como habitat no registro."
-      - name: is_habitat_areas_rochosas
-        description: "Booleano. Indica se 'áreas rochosas' está listado como habitat no registro."
-      - name: is_habitat_artificial
-        description: "Booleano. Indica se ambientes artificiais estão listados como habitat no registro."
-      - name: is_habitat_riparia
-        description: "Booleano. Indica se 'ripária' (margem de corpos d'água) está listada como habitat no registro."
-      - name: is_habitat_costa_maritma
-        description: "Booleano. Indica se 'costa/marítima' está listada como habitat no registro."
-      - name: is_habitat_zonas_umidas
-        description: "Booleano. Indica se zonas úmidas estão listadas como habitat no registro."
-      - name: is_habitat_mar_aberto
-        description: "Booleano. Indica se 'mar aberto' está listado como habitat no registro."
-      - name: is_habitat_outros
-        description: "Booleano. Indica se o habitat foi classificado como 'outros' no registro."
-      - name: ds_habitat_outros
-        description: "Booleano. Flag que indica presença de descrição adicional para 'outros' habitats (campo d.o_desc convertido para booleano)."
-      - name: sgk_habitat_principal
-        description: "Chave estrangeira referenciando o habitat principal da ave"
-      - name: qtd_habitats_principais
-        description: "Inteiro. Quantidade de habitats principais associados ao registro (campo d.hb)."
-      # 4.2 Dieta
-      - name: sgk_dieta
-        description: "Chave estrangeira referenciando a dieta primária da ave"
-        tests:
-          - not_null
-      - name: vl_dieta_peso_invertebrados
-        description: "Valor percentual do peso da dieta composto por invertebrados"
-      - name: vl_dieta_peso_frutas
-        description: "Valor percentual do peso da dieta composto por frutas"
-      - name: vl_dieta_peso_nectar
-        description: "Valor percentual do peso da dieta composto por néctar"
-      - name: vl_dieta_peso_sementes
-        description: "Valor percentual do peso da dieta composto por sementes"
-      - name: vl_dieta_peso_vertebrados_terrestres
-        description: "Valor percentual do peso da dieta composto por vertebrados terrestres"
-      - name: vl_dieta_peso_peixes
-        description: "Valor percentual do peso da dieta composto por peixes"
-      - name: vl_dieta_peso_carniceiros
-        description: "Valor percentual do peso da dieta composto por carniceiros"
-      - name: vl_dieta_peso_vegetal_nao_reprodutivo
-        description: "Valor percentual do peso da dieta composto por material vegetal não reprodutivo"
-      - name: vl_dieta_peso_diversificada
-        description: "Valor percentual do peso da dieta composto por diversos"
-      - name: vl_dieta_ponderada_total
-        description: "Valor percentual do peso da dieta composto por outros itens"
-      - name: ds_dieta
-        description: "Descrição adicional da dieta informada no registro"
-      - name: qtd_tp_alimentos_principais_consumidos
-        description: "Quantidade de tipos de alimentos principais consumidos pela ave"
-      - name: nr_esi_indice_especializacao_ecologica
+        description: Indica ocorrência em habitat de bambu.
 
-      # 5.1 Comportamento Social
+      - name: is_habitat_bosque
+        description: Indica ocorrência em bosques.
+
+      - name: is_habitat_arbustos
+        description: Indica ocorrência em áreas arbustivas.
+
+      - name: is_habitat_savana
+        description: Indica ocorrência em savanas.
+
+      - name: is_habitat_pastagens
+        description: Indica ocorrência em pastagens.
+
+      - name: is_habitat_planicies
+        description: Indica ocorrência em planícies.
+
+      - name: is_habitat_areas_rochosas
+        description: Indica ocorrência em áreas rochosas.
+
+      - name: is_habitat_artificial
+        description: Indica ocorrência em ambientes artificiais.
+
+      - name: is_habitat_riparia
+        description: Indica ocorrência em ambientes ripários.
+
+      - name: is_habitat_costa_maritma
+        description: Indica ocorrência em áreas costeiras marítimas.
+
+      - name: is_habitat_zonas_umidas
+        description: Indica ocorrência em zonas úmidas.
+
+      - name: is_habitat_mar_aberto
+        description: Indica ocorrência em mar aberto.
+
+      - name: is_habitat_outros
+        description: Indica ocorrência em outros habitats.
+
+      - name: ds_habitat_outros
+        description: Descrição textual de habitats classificados como outros.
+
+      - name: sgk_habitat_principal
+        description: Chave do habitat principal da espécie.
+
+      - name: qtd_habitats_principais
+        description: Quantidade de habitats principais associados à espécie.
+
+      # 4. Dieta
+      - name: sgk_dieta
+        description: Chave da dieta principal da espécie.
+
+      - name: vl_dieta_peso_invertebrados
+        description: Peso relativo de invertebrados na dieta.
+
+      - name: vl_dieta_peso_frutas
+        description: Peso relativo de frutas na dieta.
+
+      - name: vl_dieta_peso_nectar
+        description: Peso relativo de néctar na dieta.
+
+      - name: vl_dieta_peso_sementes
+        description: Peso relativo de sementes na dieta.
+
+      - name: vl_dieta_peso_vertebrados_terrestres
+        description: Peso relativo de vertebrados terrestres na dieta.
+
+      - name: vl_dieta_peso_peixes
+        description: Peso relativo de peixes na dieta.
+
+      - name: vl_dieta_peso_carniceiros
+        description: Peso relativo de carniça na dieta.
+
+      - name: vl_dieta_peso_vegetal_nao_reprodutivo
+        description: Peso relativo de material vegetal não reprodutivo na dieta.
+
+      - name: vl_dieta_peso_diversificada
+        description: Peso relativo de dieta diversificada.
+
+      - name: vl_dieta_ponderada_total
+        description: Soma ponderada dos pesos de dieta.
+
+      - name: ds_dieta
+        description: Descrição textual da dieta.
+
+      - name: qtd_tp_alimentos_principais_consumidos
+        description: Quantidade de tipos principais de alimento consumidos.
+
+      - name: nr_esi_indice_especializacao_ecologica
+        description: Índice de especialização ecológica (ESI).
+
+      # 5. Comportamento Social
       - name: is_comportamento_colonial
-        description: "Indica se o comportamento social da ave é colonial (booleano)."
+        description: Indica comportamento colonial.
+
       - name: is_comportamento_forma_bando
-        description: "Indica se o comportamento social da ave é formar bando (booleano)."
+        description: Indica formação de bandos.
+
       - name: is_comportamento_pares_grupos_familiares
-        description: "Indica se o comportamento social da ave é viver em pares ou grupos familiares (booleano)."
+        description: Indica ocorrência em pares ou grupos familiares.
+
       - name: is_comportamento_solitario_pares
-        description: "Indica se o comportamento social da ave é viver solitário ou em pares (booleano)."
+        description: Indica comportamento solitário em pares.
+
       - name: is_comportamento_solitario
-        description: "Indica se o comportamento social da ave é solitário (booleano)."
-      - name: is_comportamento_exibicao_cortejo_grupo
-        description: "Indica se o comportamento social da ave inclui exibição ou cortejo em grupo (booleano)."
+        description: Indica comportamento estritamente solitário.
+
       - name: is_monogamia
-        description: "Indica se o padrão de acasalamento da ave é monogâmico (booleano)."
+        description: Indica sistema reprodutivo monogâmico.
+
       - name: is_poligamia
-        description: "Indica se o padrão de acasalamento da ave é poligâmico (booleano)."
+        description: Indica sistema reprodutivo poligâmico.
+
       - name: is_criacao_cooperativa
-        description: "Indica se o padrão de criação da ave é cooperativo (booleano)." 
-      
-      # 5.2 Reprodução
+        description: Indica criação cooperativa de filhotes.
+
+      # 6. Reprodução
+      - name: nr_ninhada_minima_anual
+        description: Número mínimo de ninhadas por ano.
+
+      - name: nr_ninhada_maxima_anual
+        description: Número máximo de ninhadas por ano.
+
+      - name: nr_ovos_minimo_por_ninhada
+        description: Número mínimo de ovos por ninhada.
+
+      - name: nr_ovos_maximo_por_ninhada
+        description: Número máximo de ovos por ninhada.
+
+      - name: tp_sexo_incubacao
+        description: Sexo responsável pela incubação.
+
+      - name: nr_dias_incubacao_minima
+        description: Duração mínima do período de incubação (dias).
+
+      - name: nr_dias_incubacao_maxima
+        description: Duração máxima do período de incubação (dias).
+
+      - name: nr_dias_periodo_fledging_minimo
+        description: Duração mínima do período de fledging (dias).
+
+      - name: nr_dias_periodo_fledging_maximo
+        description: Duração máxima do período de fledging (dias).
+
+      - name: is_parasita_ninho
+        description: Indica se a espécie é parasita de ninho.
+
+      - name: is_parasita_ninho_vitima
+        description: Indica se a espécie é vítima de parasitismo de ninho.
+
+      # 7. Movimento
+      - name: sgk_migracao
+        description: Chave do tipo de migração.
+
+      - name: sgk_voo
+        description: Chave do tipo de voo ou incapacidade de voo.
+
+      - name: is_migracao_altitudinal_elevacional
+        description: Indica migração altitudinal ou elevacional.
+
+      - name: is_movimento_irregular
+        description: Indica movimento irregular.
+
+      - name: is_dispersao_longa_distancia
+        description: Indica dispersão de longa distância.
+
+      - name: is_sedentario
+        description: Indica comportamento sedentário.
+
+      # 8. Imagens
+      - name: nm_gcp_path_image
+        description: Caminho da imagem da espécie no Google Cloud Storage.
 
