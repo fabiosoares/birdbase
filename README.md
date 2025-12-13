@@ -188,10 +188,3 @@ sources:
     tables:
       - name: table_name
 ```
-
-## Comandos GIT
-- git status
-- git commit -m "mensagem"
-- git pull
-- git push
-

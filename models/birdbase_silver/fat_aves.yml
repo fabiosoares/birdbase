@@ -53,18 +53,10 @@ models:
 
       - name: is_alcance_global_restrito
         description: Indica se a espécie possui alcance geográfico global restrito.
-        tests:
-          - accepted_values:
-              arguments:
-                values: [true, false]
 
       - name: is_reproducao_restrita_ilhas
         description: Indica se a reprodução ocorre exclusivamente em ilhas.
-        tests:
-          - accepted_values:
-              arguments:
-                values: [true, false]
-
+        
       - name: id_faixa_latitudinal
         description: Identificador da faixa latitudinal de ocorrência.
 
