@@ -148,6 +148,11 @@ Subir o html do modelo DTB em si
 dbt docs serve
 ```
 
+Documentação com comandos combinados
+```sh
+dbt docs generate & dbt docs serve
+```
+
 
 Config modelos .sql
 ```sql
