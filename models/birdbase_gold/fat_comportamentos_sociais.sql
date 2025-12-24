@@ -13,6 +13,7 @@ SELECT
     dim_ordens.tp_ordem_latin AS tp_ordem_latin,
     dim_ordens.ds_ordem AS ds_ordem,
     fat_aves.nm_cientifico  AS nm_cientifico,
+    fat_aves.nm_popular,
     CONCAT(dim_ordens.tp_ordem_latin, ' (',dim_ordens.ds_ordem,')') AS tp_ds_ordem,
     {{ target.schema }}.tratarCampoBoolString(fat_aves.is_comportamento_colonial) AS tp_comportamento_colonial,
     {{ target.schema }}.tratarCampoBoolString(fat_aves.is_comportamento_forma_bando) AS is_comportamento_forma_bando,

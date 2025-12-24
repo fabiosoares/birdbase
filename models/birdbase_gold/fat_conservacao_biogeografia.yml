@@ -39,6 +39,9 @@ models:
       - name: nm_cientifico
         description: Nome científico da espécie.
 
+      - name: nm_popular
+        description: Nome popular priorizando português; fallback para inglês.
+
       # Indicadores geográficos
       - name: is_alcance_global_restrito
         description: Indica se a espécie possui alcance geográfico global restrito.

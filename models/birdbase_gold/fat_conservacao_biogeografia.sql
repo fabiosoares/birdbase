@@ -14,6 +14,7 @@ SELECT
     fat_aves.sgk_reino_biogeografico,
     CONCAT(dim_reino_biogeografico.tp_reino_biogeografico, ' - ', dim_reino_biogeografico.nm_portugues) AS nm_reino_biogeografico,
     fat_aves.nm_cientifico,
+    fat_aves.nm_popular,
     fat_aves.is_alcance_global_restrito,
     fat_aves.is_reproducao_restrita_ilhas,
     dim_faixa_latitudinal.tp_faixa_latitudinal
