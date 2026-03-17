@@ -5,7 +5,7 @@ birdbase:
       fixed_retries: 1
       location: US
       method: service-account
-      keyfile: "/Users/thonnymuniz/MBA Data Engineer/Projeto Final/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json"
+      keyfile: "/var/www/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json"
       priority: batch
       project: mackenzie-engenharia-dados
       threads: 20
@@ -16,7 +16,7 @@ birdbase:
       fixed_retries: 1
       location: US
       method: service-account
-      keyfile: "/Users/thonnymuniz/MBA Data Engineer/Projeto Final/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json"
+      keyfile: "//var/www/birdbase/keys/mackenzie-engenharia-dados-dac95f889d36.json"
       priority: batch
       project: mackenzie-engenharia-dados
       threads: 20
