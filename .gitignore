@@ -5,3 +5,4 @@ logs/
 keys/*.json
 birdbase-venv/
 .venv/
+dbt_internal_packages/
