@@ -1,0 +1,8 @@
+target/
+dbt_packages/
+logs/
+keys/*.json
+.venv/
+birdbase-venv/
+docs/
+.user.yml
